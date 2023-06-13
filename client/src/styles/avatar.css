@@ -1,0 +1,46 @@
+.supper-avatar {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+}
+
+.big-avatar {
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+}
+
+.medium-avatar {
+  width: 35px !important;
+  height: 35px;
+  border-radius: 50%;
+
+}
+
+.small-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+/*  icon */
+.reactions {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  text-align: center;
+  cursor: pointer;
+}
+.reactions span {
+  margin: 3px 0;
+}
+
+.username {
+  opacity: 0.8;
+  font-size: 1rem;
+  color: #536471;
+}
+
+.fullname {
+  font-size: 1rem;
+  color: #0f1419;
+  font-weight: 600;
+}

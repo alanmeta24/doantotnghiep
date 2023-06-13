@@ -1,0 +1,116 @@
+.status_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #dddddda3;
+  z-index: 4;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+.status_modal form {
+  max-width: 700px;
+  width: 100%;
+  background: white;
+  margin: 167px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1), -1px -1px 3px rgba(0, 0, 0, 0.1);
+}
+.status_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  transform: translateY(-13px);
+}
+.status_header span {
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+.status_body textarea {
+  width: 100%;
+  min-height: 140px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 17px;
+  font-weight: 400;
+  color: #65676b;
+}
+.status_body .input_images {
+  justify-content: center;
+}
+.status_body .input_images i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+.status_body .input_images .file_upload {
+  overflow: hidden;
+  margin: 0 10px;
+  position: relative;
+}
+.status_body .input_images .file_upload #file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.status_footer {
+  display: flex;
+}
+
+.show_images {
+  max-height: 270px;
+  width: 101%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  place-items: center;
+  padding: 10px 0;
+  flex-direction: column;
+}
+.show_images #file_img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1%;
+}
+.show_images #file_img img,
+.show_images #file_img video {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  max-height: 100px;
+}
+img,
+video {
+  border-radius: 8px;
+}
+
+.wrap {
+  display: flex;
+}
+.show_images #file_img span {
+  position: absolute;
+  top: 25%;
+  right: 0;
+  background: white;
+  padding: 3px 7px;
+  border-radius: 50%;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.stream span {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  color: crimson;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+}

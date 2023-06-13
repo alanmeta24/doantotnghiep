@@ -1,0 +1,148 @@
+/* classroom card */
+.joined {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
+}
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.joined__list {
+  display: flex;
+  flex-direction: column;
+  height: 18.375rem;
+  margin-bottom: 1.9rem;
+  margin-right: 1.9rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 19.75rem;
+  background-color: #fff;
+  border: 0.0625rem solid #dadce0;
+  -webkit-border-radius: 1.2Fvrem;
+  border-radius: 1.2rem;
+}
+
+.joined__list:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1), -1px -1px 10px rgba(0, 0, 0, 0.1);
+}
+.joined__imgWrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #174ea6;
+}
+.joined__image {
+  background-image: url(https://gstatic.com/classroom/themes/Physics.jpg);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.joined__container {
+  position: relative;
+}
+.joined__content {
+  display: flex;
+  justify-content: space-between;
+  height: 95px;
+  padding: 1rem 1rem 0.75rem;
+  position: relative;
+}
+
+.joined__content .material-icons {
+  transform: rotate(90deg) !important;
+  color: white !important;
+}
+.joined__content h2 {
+  color: white;
+  text-decoration: none;
+}
+.joined__content h2:hover {
+  color: white;
+  text-decoration: unset;
+}
+.joined__title {
+  color: white;
+  font-family: 'Roboto';
+}
+.joined__title h2 {
+  color: white;
+  font-weight: 400;
+  font-size: 24px;
+  text-decoration: none;
+}
+.joined__title h2:hover,
+.joined__owner:hover {
+  text-decoration: underline;
+}
+
+.joined__owner {
+  color: white;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+}
+.joined__avatar {
+  float: right;
+  height: 4.6875rem !important;
+  position: relative !important;
+  margin-top: -42px !important;
+  width: 4.6875rem !important;
+  text-align: left;
+  margin-right: 10px;
+}
+.joined__bottom {
+  margin-top: 40%;
+  display: flex;
+  color: #5f6368;
+  justify-content: flex-end;
+  border-top: 0.2px solid #e0e0e0;
+  padding: 10px;
+}
+.joined__bottom > * {
+  margin-right: 20px;
+}
+
+/* create classroom */
+
+.form__input {
+  margin-bottom: 10px !important;
+  width: 100%;
+}
+/* .input-guide .MuiFilledInput-root {
+  height: 210px !important;
+} */
+.form__inputs:last-of-type {
+  margin-bottom: 40px;
+}
+.form__inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 20px 10px 20px;
+}
+.form__dialog {
+  text-align: center;
+}
+
+.MuiFilledInput-root {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* @media only screen and (min-width: 842px) {
+  .form__input {
+    width: 36vw !important;
+  }
+} */

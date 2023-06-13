@@ -1,0 +1,132 @@
+/* login && verify  */
+.auth {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth_page {
+  width: 70%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1cdcd;
+  background: linear-gradient(98.63deg, #fc771f 0%, #f5c32c 100%);
+  box-shadow: 0 0 4px #ddd;
+}
+.auth-content {
+  width: 60%;
+}
+.auth-logo {
+  text-align: center;
+  margin-bottom: 5%;
+}
+.forgot-pass {
+  text-align: center;
+  margin-top: 3%;
+}
+.forgot-pass a {
+  /* text-decoration: none; */
+  color: #000;
+}
+.forgot-pass a:hover {
+  color: #1d8aff;
+}
+.auth-form h5 {
+  margin-bottom: 5% !important;
+}
+.auth-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+  gap: 1.5%;
+}
+.auth-footer p {
+  margin-bottom: 0;
+}
+
+.pass {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pass small {
+  position: absolute;
+  top: 50%;
+  left: 93%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+form {
+  width: 30%;
+}
+.auth-form {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+.auth_page .auth_page-title {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.7rem;
+  font-weight: 750;
+  color: #ffffff;
+  margin: 16px;
+}
+
+.auth_page .auth_page-title h5 {
+  margin: 15px 0;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 27px;
+}
+.auth_page img {
+  width: 100%;
+  max-width: 228px;
+}
+.logo-form {
+  width: 35%;
+}
+.auth_page form {
+  background: #fff;
+  max-width: 430px;
+  width: 100%;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1), -1px -1px 8px rgba(0, 0, 0, 0.1);
+  padding: 22px;
+  border-radius: 22px;
+}
+
+.auth_page form .pass {
+  position: relative;
+}
+
+.auth_page form .pass small {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.5;
+}
+.position-relative small {
+  position: absolute;
+  top: 430%;
+  right: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.5;
+  min-height: calc(100vh - 400px);
+  color: #002f77;
+}
+.position-relative.notfound-wrap {
+  height: 100% !important;
+  width: 100% !important;
+  position: unset !important;
+}

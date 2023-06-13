@@ -1,0 +1,204 @@
+.main__wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 2 * 0.5rem);
+  max-width: 62.5rem;
+}
+.main__content {
+  background-color: #1967d2;
+  border-radius: 0.5rem;
+
+  overflow: hidden;
+}
+.main__wrapper1 {
+  height: 15rem;
+  position: relative;
+  width: 100%;
+}
+.main__bgImage {
+  background-image: url(https://gstatic.com/classroom/themes/img_backtoschool.jpg);
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.main__emptyStyles {
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-image: radial-gradient(
+    25rem 18.75rem ellipse at bottom right,
+    #317df7,
+    transparent
+  );
+}
+.main__text {
+  position: relative;
+  padding: 1.5rem;
+}
+.main__heading {
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 2.75rem;
+  color: #fff;
+
+  margin: 0;
+}
+.main__overflow {
+  text-overflow: ellipsis;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+.main__section {
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  color: #fff;
+}
+.main__wrapper2 {
+  color: #fff;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.main__code {
+  font-weight: 500;
+  font-style: normal;
+}
+.main__announce {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.main__status {
+  border: 1.5px solid #dadce0;
+  padding: 19px;
+  border-radius: 10px;
+  width: 260px;
+  height: 93px;
+  margin-bottom: 18px;
+}
+.main__status-hidden {
+  padding: 19px;
+  border-radius: 10px;
+  max-width: 260px;
+  width: 100%;
+  height: 93px;
+  margin-bottom: 18px;
+}
+
+.main__status p {
+  line-height: 30px;
+  margin-bottom: 0 !important;
+}
+.main__announcementsWrapper {
+  border-radius: 0.5rem;
+  min-height: 4.5rem;
+  height: 100%;
+}
+.main__ancContent {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+    0 2px 6px 2px rgba(60, 64, 67, 0.149);
+  padding: 24px;
+  width: 707px;
+  border-radius: 0.5rem;
+
+  color: rgba(0, 0, 0, 0.549);
+}
+
+.main__wrapper100 {
+  display: flex !important;
+  cursor: pointer;
+  align-items: center;
+}
+.main__wrapper100 > * {
+  margin-right: 20px;
+}
+#filled-multiline-flexible {
+  width: 635px !important;
+  height: 20vh !important;
+}
+#filled-multiline-exercise {
+  height: 35vh !important;
+}
+.main__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.main__buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 660px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.main__footer {
+  margin: 10px 10px 0 10px;
+  width: 650px;
+}
+
+.main__footer-btn {
+  text-align: end;
+}
+
+@media only screen and (max-width: 842px) {
+  .main__status {
+    display: none;
+  }
+}
+
+/* create class */
+.form {
+  padding: 4%;
+}
+
+.form__input {
+  margin-bottom: 10px !important;
+  width: 100%;
+}
+.form__inputs:last-of-type {
+  margin-bottom: 40px;
+}
+.form__inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.MuiDialog-paperWidthLg {
+  width: 40% !important;
+}
+.MuiFilledInput-root {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+/* 
+@media only screen and (min-width: 842px) {
+  .form__input {
+    width: 40vw !important;
+  }
+} */
+
+/* css classrooms */
+.header_class {
+  display: flex;
+  margin-bottom: 20px;
+}
+.header_class button {
+  margin-left: 15px;
+}
