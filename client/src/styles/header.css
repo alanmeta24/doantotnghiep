@@ -1,13 +1,15 @@
+.header_main {
+  border-bottom: 1px solid #dbdbdb;
+}
 .header {
-  width: 100%;
+  width: 1500px;
   position: sticky;
   top: 0;
-  left: 0;
+  left: 100px;
   height: 66px;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   background: #ffffff;
-  border: 1px solid #dbdbdb;
   text-align: center;
   justify-content: space-between;
   padding: 0 1.5%;
@@ -29,7 +31,8 @@
 }
 
 .header_control {
-  width: 48%;
+  width: 700px;
+  /* width: 40%; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -47,7 +50,7 @@
 }
 
 .menu-right {
-  margin: auto 0;
+  margin: auto 25px;
 }
 .header-title {
   text-decoration: none;
@@ -204,4 +207,18 @@
   color: #fff;
   top: 2px;
   right: 44px;
+}
+
+.header_detail {
+  width: 1500px;
+  position: sticky;
+  top: 0;
+  left: 100px;
+  height: 66px;
+  /* z-index: 3; */
+  display: flex;
+  background: #ffffff;
+  text-align: center;
+  justify-content: space-between;
+  padding: 0 1.5%;
 }

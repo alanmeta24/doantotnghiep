@@ -1,9 +1,10 @@
 .menu {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2%;
+  position: sticky;
+  top: 0;
+  left: 406px;
+
+  /* align-items: center;
+  gap: 2%; */
 }
 
 .menu-item {

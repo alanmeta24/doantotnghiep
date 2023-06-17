@@ -55,10 +55,6 @@ const ClassDetail = ({ classroom }) => {
                 <p>{classroom._id}</p>
                 <span className="material-icons">content_copy</span>
               </div>
-              <div className="main__status">
-                <p>Sắp đến hạn</p>
-                <p>Không có bài tập sắp hết hạn</p>
-              </div>
             </div>
             <div className="main__announcementsWrapper">
               <div className="main__ancContent">

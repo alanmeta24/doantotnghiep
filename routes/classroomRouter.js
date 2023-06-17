@@ -13,6 +13,9 @@ router
   .get(auth, classroomCtrl.getClassroom)
   .delete(auth, classroomCtrl.deleteClassroom);
 
+// router.patch('/classroom/:id/members', auth, classroomCtrl.members);
+// router.patch('/classroom/:id/unmembers', auth, classroomCtrl.unmembers);
+
 // router.patch('/post/:id/like', auth, postCtrl.likePost)
 
 // router.patch('/post/:id/unlike', auth, postCtrl.unLikePost)

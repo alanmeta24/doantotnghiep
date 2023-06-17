@@ -6,18 +6,20 @@ import HeaderRight from './HeaderRight.js.js';
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="header_left">
-        <Link to="/" className="logo">
-          <img src={UTC2} alt="" />
-        </Link>
-        <Link className="header-link" to="/">
-          <p className="header-title">E-Learning</p>
-        </Link>
-      </div>
-      <HeaderMenu />
+    <div className="header_main">
+      <div className="header">
+        <div className="header_left">
+          <Link to="/" className="logo">
+            <img src={UTC2} alt="" />
+          </Link>
+          <Link className="header-link" to="/">
+            <p className="header-title">E-Learning</p>
+          </Link>
+        </div>
+        <HeaderMenu />
 
-      <HeaderRight />
+        <HeaderRight />
+      </div>
     </div>
   );
 };

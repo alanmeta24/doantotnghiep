@@ -24,7 +24,7 @@ ol {
   background-color: #fff;
   border: 0.0625rem solid #dadce0;
   -webkit-border-radius: 1.2Fvrem;
-  border-radius: 1.2rem;
+  border-radius: 1rem;
 }
 
 .joined__list:hover {
@@ -85,11 +85,13 @@ ol {
 }
 .joined__title h2:hover,
 .joined__owner:hover {
-  text-decoration: underline;
+  text-decoration: none !important;
 }
 
 .joined__owner {
+  text-decoration: none;
   color: white;
+  margin: 10px;
   font-weight: 400 !important;
   font-size: 13px !important;
 }
@@ -100,7 +102,7 @@ ol {
   margin-top: -42px !important;
   width: 4.6875rem !important;
   text-align: left;
-  margin-right: 10px;
+  margin-right: 16px;
 }
 .joined__bottom {
   margin-top: 40%;

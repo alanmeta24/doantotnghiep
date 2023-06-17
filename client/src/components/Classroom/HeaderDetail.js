@@ -5,34 +5,29 @@ import UTC2 from '../../assets/images/uct2.png';
 
 const HeaderDetail = ({ classroom }) => {
   return (
-    <div className="header">
-      <div className="header_left">
+    <div className="header_detail">
+      {/* <div className="header_left">
         <Link to="/" className="logo">
           <img src={UTC2} alt="" />
         </Link>
         <Link className="header-link" to="/">
           <p className="header-title"> {classroom.className}</p>
         </Link>
+      </div> */}
+
+      <div className="header_control menu">
+        <Link to={`/classroom/${classroom._id}`} className="btn header-link">
+          Bảng tin
+        </Link>
+
+        <Link to={`/exercise`} className="btn header-link">
+          Bài tập
+        </Link>
+
+        <Link to={`/members`} className="btn header-link">
+          Thành viên
+        </Link>
       </div>
-
-      <ul className="menu">
-        <li className="menu-item">
-          <Link to={`/classroom/${classroom._id}`} className="btn menu-link">
-            Bảng tin
-          </Link>
-        </li>
-
-        <li className="menu-item">
-          <Link to={`/exercise`} className="btn menu-link">
-            Bài tập
-          </Link>
-        </li>
-        <li className="menu-item">
-          <Link to={`/members`} className="btn menu-link">
-            Thành viên
-          </Link>
-        </li>
-      </ul>
 
       {/* <MenuRight /> */}
     </div>
