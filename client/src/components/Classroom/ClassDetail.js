@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import UTC2 from '../../assets/images/uct2.png';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import Posts from '../home/Posts';
+import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
+
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
-  const { homePosts } = useSelector((state) => state);
+  const { homePosts, status } = useSelector((state) => state);
 
   window.addEventListener('scroll', () => {
     if (window.location.pathname === '/') {
@@ -57,11 +59,12 @@ const ClassDetail = ({ classroom }) => {
               </div>
             </div>
             <div className="main__announcementsWrapper">
+              {status && <StatusModal />}
               <div className="main__ancContent">
                 <div
                   className="main__wrapper100"
                   onClick={() =>
-                    dispatch({ type: GLOBALTYPES.STATUS_POST, payload: true })
+                    dispatch({ type: GLOBALTYPES.STATUS, payload: true })
                   }
                 >
                   <Avatar src={auth.user.avatar} size="big-avatar" />

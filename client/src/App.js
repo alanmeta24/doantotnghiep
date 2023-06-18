@@ -83,7 +83,7 @@ function App() {
       <div className="App">
         <div className="main">
           {auth.token && <Header />}
-          {status && <StatusModal />}
+          {/* {status && <StatusModal />} */}
           {status_class && <ClassModal />}
           {auth.token && <SocketClient />}
           {call && <CallModal />}
