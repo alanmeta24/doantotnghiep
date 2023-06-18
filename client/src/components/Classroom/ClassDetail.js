@@ -59,7 +59,7 @@ const ClassDetail = ({ classroom }) => {
               </div>
             </div>
             <div className="main__announcementsWrapper">
-              {status && <StatusModal />}
+              {status && <StatusModal classroom={classroom} />}
               <div className="main__ancContent">
                 <div
                   className="main__wrapper100"

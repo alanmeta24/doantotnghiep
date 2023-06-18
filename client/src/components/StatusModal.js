@@ -5,7 +5,7 @@ import { createPost, updatePost } from '../redux/actions/postAction';
 import Icons from './Icons';
 import { imageShow, videoShow } from '../utils/mediaShow';
 
-const StatusModal = () => {
+const StatusModal = ({ classroom }) => {
   const { auth, theme, status, socket } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -83,15 +83,21 @@ const StatusModal = () => {
         type: GLOBALTYPES.ALERT,
         payload: { error: 'Vui Lòng Thêm Ảnh Của Bạn.' },
       });
-
-    if (status.onEdit) {
-      dispatch(updatePost({ content, images, auth, status }));
-    } else {
-      dispatch(createPost({ content, images, auth, socket }));
-    }
-
     setContent('');
     setImages([]);
+
+    const newPost = {
+      content,
+      images: [],
+      user: auth.user,
+    };
+
+    if (status.onEdit) {
+      // dispatch(updatePost({ newPost, auth, status }));
+    } else {
+      dispatch(createPost({ classroom, newPost, auth, socket }));
+    }
+
     if (tracks) tracks.stop();
     dispatch({ type: GLOBALTYPES.STATUS, payload: false });
   };

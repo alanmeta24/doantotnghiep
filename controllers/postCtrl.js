@@ -18,31 +18,69 @@ class APIfeatures {
 }
 
 const postCtrl = {
+  // createPost: async (req, res) => {
+  //   try {
+  //     const { content, images } = req.body;
+
+  //     if (images.length === 0)
+  //       return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
+
+  //     const newPost = new Posts({
+  //       content,
+  //       images,
+  //       user: req.user._id,
+  //     });
+  //     await newPost.save();
+
+  //     res.json({
+  //       msg: 'Created Post!',
+  //       newPost: {
+  //         ...newPost._doc,
+  //         user: req.user,
+  //       },
+  //     });
+  //   } catch (err) {
+  //     return res.status(500).json({ msg: err.message });
+  //   }
+  // },
+
   createPost: async (req, res) => {
     try {
-      const { content, images } = req.body;
+      const { content, images, classroomId, classroomUserId } = req.body;
+
+      const classroom = await Classrooms.findById(classroomId);
+
+      if (!classroom)
+        return res.status(400).json({ msg: 'Lớp học không tồn tại.' });
 
       if (images.length === 0)
         return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
 
       const newPost = new Posts({
+        user: req.user._id,
         content,
         images,
-        user: req.user._id,
+        classroomUserId,
+        classroomId,
       });
+
+      await Classrooms.findOneAndUpdate(
+        { _id: classroomId },
+        {
+          $push: { posts: newPost._id },
+        },
+        { new: true },
+      );
+
       await newPost.save();
 
-      res.json({
-        msg: 'Created Post!',
-        newPost: {
-          ...newPost._doc,
-          user: req.user,
-        },
-      });
+      res.json({ newPost });
+      console.log({ newPost });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   getPosts: async (req, res) => {
     try {
       const features = new APIfeatures(
