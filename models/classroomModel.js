@@ -15,7 +15,8 @@ const classSchema = new mongoose.Schema(
     role: { type: String, default: 'user' },
     user: { type: mongoose.Types.ObjectId, ref: 'user' },
     members: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
-    posts: [{ type: mongoose.Types.ObjectId, ref: 'post' }],
+    // posts: [{ type: mongoose.Types.ObjectId, ref: 'post' }],
+    tweets: [{ type: mongoose.Types.ObjectId, ref: 'tweet' }],
   },
   {
     timestamps: true,

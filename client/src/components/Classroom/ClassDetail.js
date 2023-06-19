@@ -6,6 +6,8 @@ import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import Posts from '../home/Posts';
 import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
+import TweetInput from './TweetInput';
+import TweetDisplay from './TweetDisplay';
 
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
@@ -59,9 +61,10 @@ const ClassDetail = ({ classroom }) => {
               </div>
             </div>
             <div className="main__announcementsWrapper">
-              {status && <StatusModal classroom={classroom} />}
+              {/* {status && <StatusModal classroom={classroom} />} */}
               <div className="main__ancContent">
-                <div
+                <TweetInput classroom={classroom} />
+                {/* <div
                   className="main__wrapper100"
                   onClick={() =>
                     dispatch({ type: GLOBALTYPES.STATUS, payload: true })
@@ -69,9 +72,11 @@ const ClassDetail = ({ classroom }) => {
                 >
                   <Avatar src={auth.user.avatar} size="big-avatar" />
                   <div>Thông báo nội dung nào đó cho lớp học của bạn</div>
-                </div>
+                </div> */}
               </div>
-              <div className="main__announce ">
+
+              <TweetDisplay />
+              {/* <div className="main__announce ">
                 {homePosts.loading ? (
                   <img
                     src={LoadIcon}
@@ -83,7 +88,7 @@ const ClassDetail = ({ classroom }) => {
                 ) : (
                   <Posts />
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
