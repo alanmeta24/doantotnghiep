@@ -179,6 +179,8 @@ label {
 
 @import url('./styles/message.css');
 
+@import url('./styles/post-thumb.css');
+
 /* -------------- Product modal ------------ */
 .product_modal {
   position: fixed;

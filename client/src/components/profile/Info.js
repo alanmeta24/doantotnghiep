@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Avatar from "../Avatar";
-import EditProfile from "./EditProfile";
-// import ChangePassword from "./changePassword";
-import FollowBtn from "../FollowBtn";
-import Followers from "./Followers";
-import Following from "./Following";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
+import { useEffect, useState } from 'react';
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
+import Avatar from '../Avatar';
+import EditProfile from './EditProfile';
+import Followers from './Followers';
+import Following from './Following';
+
+import ImgBuilding from '../../assets/images/building.jpg';
+import FollowBtn from '../FollowBtn';
 
 const Info = ({ id, auth, profile, dispatch }) => {
   const [userData, setUserData] = useState([]);
   const [onEdit, setOnEdit] = useState(false);
-
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
 
@@ -22,7 +22,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
       setUserData(newData);
     }
   }, [id, auth, dispatch, profile.users]);
-
+  // click status modal
   useEffect(() => {
     if (showFollowers || showFollowing || onEdit) {
       dispatch({ type: GLOBALTYPES.MODAL, payload: true });
@@ -35,61 +35,35 @@ const Info = ({ id, auth, profile, dispatch }) => {
     <div className="info">
       {userData.map((user) => (
         <div className="info_container" key={user._id}>
-          <Avatar src={user.avatar} size="supper-avatar" />
-
-          <div className="info_content">
-            <div className="info_content_title">
-              {/* <h2>Thông Tin</h2> */}
-              <h2>{user.username}</h2>
-
-              {user._id === auth.user._id ? (
-                <button
-                  className="btn btn-outline-info"
-                  onClick={() => setOnEdit(true)}
-                >
-                  Chỉnh Sửa Thông Tin
-                </button>
-              ) : (
-                <FollowBtn user={user} />
-              )}
+          <div className="profile_avatar">
+            <img src={ImgBuilding} alt="" className="profile_cover" />
+            <div className="profile_avatar_wrap">
+              <div className="profile_avatar_avar">
+                <div className="profile_avatar_img">
+                  <Avatar src={user.avatar} size="supper-avatar" />
+                </div>
+              </div>
+              <div className="profile_avatar_info">
+                <h4>{user.fullname}</h4>
+                <h4>@{user.username}</h4>
+              </div>
+              <div className="container_content-title">
+                {user._id === auth.user._id ? (
+                  <button
+                    className="btn btn-follow btn-warning"
+                    onClick={() => setOnEdit(true)}
+                  >
+                    Chỉnh sửa trang cá nhân
+                  </button>
+                ) : (
+                  <FollowBtn user={user} />
+                )}
+              </div>
             </div>
-            {/* <div className="change_pass">
-              <h2>{user.username}</h2>
-
-              {user._id === auth.user._id ? (
-                <button
-                  className="btn btn-outline-info"
-                  onClick={() => setOnEdit(true)}
-                >
-                  Đổi Mật Khẩu
-                </button>
-              ) : (
-                <FollowBtn user={user} />
-              )}
-            </div> */}
-
-            <div className="follow_btn">
-              <span className="mr-4" onClick={() => setShowFollowers(true)}>
-                {user.followers.length} Người Theo Dõi
-              </span>
-              <span className="ml-4" onClick={() => setShowFollowing(true)}>
-                {user.following.length} Đang Theo Dõi
-              </span>
-            </div>
-
-            <h6>
-              {user.fullname} <span className="text-danger">{user.mobile}</span>
-            </h6>
-            <p className="m-0">{user.address}</p>
-            <h6 className="m-0">{user.email}</h6>
-            <a href={user.website} target="_blank" rel="noreferrer">
-              {user.website}
-            </a>
-            <p>{user.story}</p>
           </div>
 
+          <div className="info_status">Comingsoon...</div>
           {onEdit && <EditProfile setOnEdit={setOnEdit} />}
-          {/* {onEdit && <ChangePassword setOnEdit={setOnEdit} />} */}
 
           {showFollowers && (
             <Followers
