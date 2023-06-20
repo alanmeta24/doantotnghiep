@@ -49,33 +49,6 @@ const Home = () => {
           <Posts />
         )}
       </div>
-
-      <div className="col-md-4">
-        <RightSideBar />
-      </div>
-      {/* <div className="header_class">
-        <button
-          className="btn"
-          onClick={() =>
-            dispatch({ type: GLOBALTYPES.STATUS_CLASS, payload: true })
-          }
-        >
-          Tạo lớp học
-        </button>
-
-        <button className="btn">Tham gia lớp học</button>
-      </div>
-
-      <div className="col-md-8">
-        {homeClassrooms.loading ? (
-          <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
-        ) : homeClassrooms.result === 0 &&
-          homeClassrooms.classrooms.length === 0 ? (
-          <h2 className="text-center">Không Có Bài Đăng</h2>
-        ) : (
-          <ListClass />
-        )}
-      </div> */}
     </div>
   );
 };

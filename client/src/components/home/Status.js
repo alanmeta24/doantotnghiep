@@ -1,7 +1,7 @@
-import React from "react";
-import Avatar from "../Avatar";
-import { useSelector, useDispatch } from "react-redux";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
+import React from 'react';
+import Avatar from '../Avatar';
+import { useSelector, useDispatch } from 'react-redux';
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 
 const Status = () => {
   const { auth } = useSelector((state) => state);
@@ -15,7 +15,7 @@ const Status = () => {
         className="statusBtn flex-fill"
         onClick={() => dispatch({ type: GLOBALTYPES.STATUS, payload: true })}
       >
-        {auth.user.username}, bạn đang nghĩ gì ?
+        {auth.user.username}, bạn có câu hỏi gì ?
       </button>
     </div>
   );

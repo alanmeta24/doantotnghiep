@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import PageRender from './customRouter/PageRender';
 import PrivateRouter from './customRouter/PrivateRouter';
 
-import Home from './pages/home';
+import Forum from './pages/forum';
 import Login from './pages/login';
 import Register from './pages/register';
 import Forgot from './pages/forgotPassword';
@@ -89,7 +89,7 @@ function App() {
           {call && <CallModal />}
           <Body />
 
-          <Route exact path="/" component={auth.token ? Home : Login} />
+          <Route exact path="/" component={auth.token ? Forum : Login} />
           <Route
             exact
             path="/register"

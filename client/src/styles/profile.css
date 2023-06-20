@@ -110,6 +110,7 @@
   font-weight: bold;
   color: #606770;
   font-size: 17px;
+  height: unset;
 }
 
 .edit_profile .info_avatar {
@@ -256,7 +257,6 @@
 .profile_avatar_avar {
   width: 155px;
   height: 155px;
-  background-color: #fcb61f;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,14 +1,13 @@
-import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import Home from "./pages/home";
-import Login from "./pages/login";
-import Register from "./pages/register";
-import Forgot from "./pages/forgotPassword";
-import Reset from "./pages/resetPassword";
-import NotFound from "./components/NotFound";
-import Alert from "./components/alert/Alert";
+import Login from './pages/login';
+import Register from './pages/register';
+import Forgot from './pages/forgotPassword';
+import Reset from './pages/resetPassword';
+import NotFound from './components/NotFound';
+import Alert from './components/alert/Alert';
 
 function Body() {
   const auth = useSelector((state) => state.auth);
