@@ -1,5 +1,5 @@
-import React from "react";
-import LeftSide from "../../components/message/LeftSide";
+import React from 'react';
+import LeftSide from '../../components/message/LeftSide';
 
 const Message = () => {
   return (
@@ -13,11 +13,8 @@ const Message = () => {
           className="d-flex justify-content-center 
                 align-items-center flex-column h-100"
         >
-          <i
-            className="fas fa-inbox text-primary"
-            style={{ fontSize: "5rem" }}
-          />
-          <h4>Tin Nhắn</h4>
+          <i className="fab fa-facebook-messenger icon_messenger " />
+          <h4 style={{ marginTop: '12px' }}>Tin nhắn của bạn</h4>
         </div>
       </div>
     </div>

@@ -1,56 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import TweetDisplay from '../home/tweets/TweetDisplay';
+// import React, { useState, useEffect } from 'react';
+// import TweetDisplay from '../home/tweets/TweetDisplay';
 
-const Tweets = ({ classroom }) => {
-  const [comments, setComments] = useState([]);
-  const [showComments, setShowComments] = useState([]);
-  const [next, setNext] = useState(2);
+// const Tweets = ({ classroom }) => {
+//   const [comments, setComments] = useState([]);
+//   const [showComments, setShowComments] = useState([]);
+//   const [next, setNext] = useState(2);
 
-  const [replyComments, setReplyComments] = useState([]);
+//   const [replyComments, setReplyComments] = useState([]);
 
-  useEffect(() => {
-    const newCm = post.comments.filter((cm) => !cm.reply);
-    setComments(newCm);
-    setShowComments(newCm.slice(newCm.length - next));
-  }, [post.comments, next]);
+//   useEffect(() => {
+//     const newCm = post.comments.filter((cm) => !cm.reply);
+//     setComments(newCm);
+//     setShowComments(newCm.slice(newCm.length - next));
+//   }, [post.comments, next]);
 
-  useEffect(() => {
-    const newRep = post.comments.filter((cm) => cm.reply);
-    setReplyComments(newRep);
-  }, [post.comments]);
+//   useEffect(() => {
+//     const newRep = post.comments.filter((cm) => cm.reply);
+//     setReplyComments(newRep);
+//   }, [post.comments]);
 
-  return (
-    <div className="comments">
-      {showComments.map((comment, index) => (
-        <TweetDisplay
-          key={index}
-          comment={comment}
-          post={post}
-          replyCm={replyComments.filter((item) => item.reply === comment._id)}
-        />
-      ))}
+//   return (
+//     <div className="comments">
+//       {showComments.map((comment, index) => (
+//         <TweetDisplay
+//           key={index}
+//           comment={comment}
+//           post={post}
+//           replyCm={replyComments.filter((item) => item.reply === comment._id)}
+//         />
+//       ))}
 
-      {comments.length - next > 0 ? (
-        <div
-          className="p-2 border-top"
-          style={{ cursor: 'pointer', color: 'crimson' }}
-          onClick={() => setNext(next + 10)}
-        >
-          Xem thêm bình luận...
-        </div>
-      ) : (
-        comments.length > 2 && (
-          <div
-            className="p-2 border-top"
-            style={{ cursor: 'pointer', color: 'crimson' }}
-            onClick={() => setNext(2)}
-          >
-            Ẩn bình luận...
-          </div>
-        )
-      )}
-    </div>
-  );
+//       {comments.length - next > 0 ? (
+//         <div
+//           className="p-2 border-top"
+//           style={{ cursor: 'pointer', color: 'crimson' }}
+//           onClick={() => setNext(next + 10)}
+//         >
+//           Xem thêm bình luận...
+//         </div>
+//       ) : (
+//         comments.length > 2 && (
+//           <div
+//             className="p-2 border-top"
+//             style={{ cursor: 'pointer', color: 'crimson' }}
+//             onClick={() => setNext(2)}
+//           >
+//             Ẩn bình luận...
+//           </div>
+//         )
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Tweets;
+
+import React from 'react';
+
+const Tweets = () => {
+  return <div>Tweets</div>;
 };
 
 export default Tweets;

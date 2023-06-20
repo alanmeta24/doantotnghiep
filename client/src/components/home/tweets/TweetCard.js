@@ -29,7 +29,7 @@ const TweetCard = ({ children, tweet, classroom, tweetId }) => {
   };
 
   return (
-    <div className="comment_card mt-2" style={styleCard}>
+    <div className="comment_card mt-2">
       <Link to={`/profile/${tweet.user._id}`} className="d-flex text-dark">
         <Avatar src={tweet.user.avatar} size="small-avatar" />
         <h6 className="mx-1">{tweet.user.username}</h6>

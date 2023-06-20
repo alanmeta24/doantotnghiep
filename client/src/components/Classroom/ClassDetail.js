@@ -7,7 +7,7 @@ import Posts from '../home/Posts';
 import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
 import TweetInput from './TweetInput';
-import TweetDisplay from './TweetDisplay';
+import TweetDisplay from './Tweets';
 
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
