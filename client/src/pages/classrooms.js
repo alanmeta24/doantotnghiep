@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Helmet from '../components/Helmet';
 import ListClass from '../components/Classroom/LissClass';
-
+import { GLOBALTYPES } from '../redux/actions/globalTypes';
 import React from 'react';
 import JoinClass from '../components/Classroom/JoinClass';
 
 const Classrooms = () => {
   const [openJoinClass, setOpenJoinClass] = useState(false);
   const { auth } = useSelector((state) => state);
-
+  const dispatch = useDispatch();
   return (
     <Helmet title="Danh sách lớp">
       <div className="home_page ">
@@ -26,7 +26,14 @@ const Classrooms = () => {
         </div> */}
         <div className="header_class">
           {auth.user.role !== 'user' && (
-            <button className="btn">Tạo lớp học</button>
+            <button
+              className="btn"
+              onClick={() =>
+                dispatch({ type: GLOBALTYPES.STATUS_CLASS, payload: true })
+              }
+            >
+              Tạo lớp học
+            </button>
           )}
 
           <button className="btn" onClick={() => setOpenJoinClass(true)}>

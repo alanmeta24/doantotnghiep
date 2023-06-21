@@ -173,13 +173,6 @@
 .form__inputs:last-of-type {
   margin-bottom: 40px;
 }
-.form__inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
 
 .MuiDialog-paperWidthLg {
   width: 40% !important;

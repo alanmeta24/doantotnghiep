@@ -60,7 +60,7 @@
   opacity: 0;
 }
 .status_footer {
-  display: flex;
+  margin-left: 30%;
 }
 
 .show_images {

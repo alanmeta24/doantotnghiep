@@ -30,6 +30,7 @@ import { getNotifies } from './redux/actions/notifyAction';
 import CallModal from './components/message/CallModal';
 import Peer from 'peerjs';
 import ClassModal from './components/Classroom/ClassModal';
+import OpenHeaderDetail from './components/Exercise/OpenHeaderDetail';
 
 function App() {
   const { auth, status, status_class, modal, call } = useSelector(
@@ -82,6 +83,11 @@ function App() {
       <Alert />
       <div className="App">
         <div className="main">
+          {/* {auth.token && !window.location.pathname.includes('classroom') ? (
+            <Header />
+          ) : (
+            <OpenHeaderDetail />
+          )} */}
           {auth.token && <Header />}
           {/* {status && <StatusModal />} */}
           {status_class && <ClassModal />}

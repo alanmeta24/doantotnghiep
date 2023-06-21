@@ -60,9 +60,6 @@ const ClassCard = ({ classroom }) => {
           Học kì: HKI
         </p>
         <p className="joined__owner" style={{ color: 'black' }}>
-          Năm học: 2021 - 2022
-        </p>
-        <p className="joined__owner" style={{ color: 'black' }}>
           Giảng viên: Trần Thị Dung
         </p>
       </div>
