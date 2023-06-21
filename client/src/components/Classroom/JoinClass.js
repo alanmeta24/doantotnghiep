@@ -31,13 +31,20 @@ const JoinClass = ({ openJoinClass, setOpenJoinClass }) => {
 
           <div className="joinClass__form">
             <div
-              style={{ fontSize: '1.25rem', color: '#3c4043' }}
+              style={{
+                fontSize: '1.25rem',
+                color: '#3c4043',
+                marginBottom: '10px',
+              }}
               className="joinClass__formText"
             >
               Mã lớp học
             </div>
             <div
-              style={{ color: '#3c4043', marginTop: '-5px' }}
+              style={{
+                color: '#3c4043',
+                marginBottom: '11px',
+              }}
               className="joinClass__formText"
             >
               Hãy liên hệ giáo viên của bạn để biết mã lớp học, sau đó nhập mã
