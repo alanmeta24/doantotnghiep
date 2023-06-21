@@ -251,7 +251,10 @@
 }
 
 .profile_avatar_wrap {
-  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px 48px;
 }
 
 .profile_avatar_avar {
@@ -262,8 +265,8 @@
   align-items: center;
   border-radius: 50%;
   position: absolute;
-  top: 227px;
-  left: 50%;
+  top: 234px;
+  left: 12%;
   transform: translateX(-50%);
 }
 

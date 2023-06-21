@@ -53,7 +53,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
                     className="btn btn-follow btn-warning"
                     onClick={() => setOnEdit(true)}
                   >
-                    Chỉnh sửa trang cá nhân
+                    Chỉnh sửa
                   </button>
                 ) : (
                   <FollowBtn user={user} />
