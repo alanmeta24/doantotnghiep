@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Helmet from '../components/Helmet';
 import ListClass from '../components/Classroom/LissClass';
 
@@ -7,6 +8,7 @@ import JoinClass from '../components/Classroom/JoinClass';
 
 const Classrooms = () => {
   const [openJoinClass, setOpenJoinClass] = useState(false);
+  const { auth } = useSelector((state) => state);
 
   return (
     <Helmet title="Danh sách lớp">
@@ -23,7 +25,10 @@ const Classrooms = () => {
           )}
         </div> */}
         <div className="header_class">
-          <button className="btn">Tạo lớp học</button>
+          {auth.user.role !== 'user' && (
+            <button className="btn">Tạo lớp học</button>
+          )}
+
           <button className="btn" onClick={() => setOpenJoinClass(true)}>
             Tham gia lớp học
           </button>
