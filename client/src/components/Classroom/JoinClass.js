@@ -28,25 +28,7 @@ const JoinClass = ({ openJoinClass, setOpenJoinClass }) => {
               <div className="joinClass__topHead">Tham gia lớp học</div>
             </div>
           </div>
-          <div className="joinClass__form">
-            <p className="joinClass__formText">You're currently signed in as</p>
-            <div className="joinClass__loginInfo">
-              <div className="joinClass__classLeft">
-                {/* <Avatar src={loggedInUser?.photoURL} /> */}
-                <div className="joinClass__loginText">
-                  <div className="joinClass__loginName">
-                    {/* {loggedInUser?.displayName} */}
-                  </div>
-                  <div className="joinClass__loginEmail">
-                    {/* {loggedInUser?.email} */}
-                  </div>
-                </div>
-              </div>
-              <Button variant="outlined" color="primary">
-                Logout
-              </Button>
-            </div>
-          </div>
+
           <div className="joinClass__form">
             <div
               style={{ fontSize: '1.25rem', color: '#3c4043' }}
@@ -64,7 +46,7 @@ const JoinClass = ({ openJoinClass, setOpenJoinClass }) => {
             <div className="joinClass__loginInfo">
               <TextField
                 id="outlined-basic"
-                label="Mã lớp"
+                label="Nhập mã lớp"
                 variant="outlined"
                 value={classCode}
                 onChange={(e) => setClassCode(e.target.value)}
@@ -73,11 +55,10 @@ const JoinClass = ({ openJoinClass, setOpenJoinClass }) => {
               />
 
               <Button
-                className="joinClass__btn"
+                className="btn"
                 variant="contained"
                 color="primary"
                 onClick={handleSubmit}
-                style={{ width: '200px !important' }}
               >
                 Tham gia
               </Button>

@@ -5,6 +5,7 @@
   --hrColor: #cfcdcd;
   --cardColor: rgba(255, 255, 255, 0.64);
   --buttonBg: linear-gradient(98.63deg, #f5c32c 0%, #fc771f 100%);
+  --buttonHover: linear-gradient(98.63deg, #fb9804 0%, #ff6600 100%);
   --inputColor: rgba(40, 52, 62, 0.07);
   --location: #ef5757;
   --shedule: #e1ae4a;
@@ -76,8 +77,8 @@ img {
 
 .btn:hover {
   cursor: pointer;
-  color: var(--orange);
-  background: transparent;
+  color: white;
+  background: var(--buttonHover);
   /* border: 2px solid var(--orange); */
 }
 h1,
@@ -180,6 +181,8 @@ label {
 @import url('./styles/message.css');
 
 @import url('./styles/post-thumb.css');
+
+@import url('./styles/members.css');
 
 /* -------------- Product modal ------------ */
 .product_modal {

@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Menu, MenuItem } from '@material-ui/core';
 import React from 'react';
 import ClassModal from '../components/Classroom/ClassModal';
-import JoinClass from '../components/JoinClass';
 
 import LoadIcon from '../images/loading.gif';
 import Status from '../components/home/Status';
@@ -16,7 +15,7 @@ import RightSideBar from '../components/home/RightSideBar';
 import { GLOBALTYPES } from '../redux/actions/globalTypes';
 let scroll = 0;
 
-const Home = () => {
+const Forum = () => {
   const [openJoinClass, setOpenJoinClass] = useState(false);
   const [openCreateClass, setOpenCreateClass] = useState(false);
   const { homeClassrooms } = useSelector((state) => state);
@@ -53,4 +52,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Forum;

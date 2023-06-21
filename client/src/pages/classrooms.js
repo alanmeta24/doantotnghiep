@@ -3,10 +3,10 @@ import Helmet from '../components/Helmet';
 import ListClass from '../components/Classroom/LissClass';
 
 import React from 'react';
+import JoinClass from '../components/Classroom/JoinClass';
 
 const Classrooms = () => {
   const [openJoinClass, setOpenJoinClass] = useState(false);
-  const [openCreateClass, setOpenCreateClass] = useState(false);
 
   return (
     <Helmet title="Danh sách lớp">
@@ -23,9 +23,17 @@ const Classrooms = () => {
           )}
         </div> */}
         <div className="header_class">
-          <button className="btn" onClick={() => setOpenCreateClass(true)}>
-            Tạo lớp học
+          <button className="btn">Tạo lớp học</button>
+          <button className="btn" onClick={() => setOpenJoinClass(true)}>
+            Tham gia lớp học
           </button>
+
+          {openJoinClass && (
+            <JoinClass
+              openJoinClass={openJoinClass}
+              setOpenJoinClass={setOpenJoinClass}
+            />
+          )}
         </div>
 
         <ListClass />

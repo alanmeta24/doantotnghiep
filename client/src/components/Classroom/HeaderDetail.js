@@ -28,7 +28,6 @@ const HeaderDetail = ({ classroom }) => {
           Thành viên
         </Link>
       </div>
-
       {/* <MenuRight /> */}
     </div>
   );
