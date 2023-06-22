@@ -5,7 +5,7 @@ import { createPost, updatePost } from '../redux/actions/postAction';
 import Icons from './Icons';
 import { imageShow, videoShow } from '../utils/mediaShow';
 
-const StatusModal = ({ classroom }) => {
+const PostInput = ({ children, classroom }) => {
   const { auth, theme, status, socket } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -92,11 +92,7 @@ const StatusModal = ({ classroom }) => {
       user: auth.user,
     };
 
-    if (status.onEdit) {
-      // dispatch(updatePost({ newPost, auth, status }));
-    } else {
-      dispatch(createPost({ classroom, newPost, auth, socket }));
-    }
+    dispatch(createPost({ classroom, newPost, auth, socket }));
 
     if (tracks) tracks.stop();
     dispatch({ type: GLOBALTYPES.STATUS, payload: false });
@@ -112,6 +108,7 @@ const StatusModal = ({ classroom }) => {
   return (
     <div className="status_modal">
       <form onSubmit={handleSubmit}>
+        {children}
         <div className="status_header">
           <h5 className="m-0">Tạo Bài Đăng</h5>
           <span
@@ -216,4 +213,4 @@ const StatusModal = ({ classroom }) => {
   );
 };
 
-export default StatusModal;
+export default PostInput;

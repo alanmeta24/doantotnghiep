@@ -33,7 +33,7 @@ export const createPost =
         classroomId: classroom._id,
         classroomUserId: classroom.user._id,
       };
-      const res = await postDataAPI('posts', data, auth.token);
+      const res = await postDataAPI('post', data, auth.token);
 
       const newData = { ...res.data.newPost, user: auth.user };
       const newClassroom = {
@@ -45,7 +45,7 @@ export const createPost =
         payload: newClassroom,
       });
 
-      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+      // dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
       // const res = await postDataAPI(
       //   'posts',
@@ -58,7 +58,7 @@ export const createPost =
       //   payload: { ...res.data.newPost, user: auth.user },
       // });
 
-      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+      // dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
 
       // Notify
       // const msg = {

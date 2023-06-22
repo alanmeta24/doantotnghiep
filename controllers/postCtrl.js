@@ -75,7 +75,7 @@ const postCtrl = {
       await newPost.save();
 
       res.json({ newPost });
-      console.log({ newPost });
+      // console.log({ newPost });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
