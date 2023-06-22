@@ -1,9 +1,9 @@
-import React from "react";
-import Avatar from "../Avatar";
-import { imageShow, videoShow } from "../../utils/mediaShow";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteMessages } from "../../redux/actions/messageAction";
-import Times from "./Times";
+import React from 'react';
+import Avatar from '../Avatar';
+import { imageShow, videoShow } from '../../utils/mediaShow';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteMessages } from '../../redux/actions/messageAction';
+import Times from './Times';
 
 const MsgDisplay = ({ user, msg, theme, data }) => {
   const { auth } = useSelector((state) => state);
@@ -12,7 +12,7 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
   const handleDeleteMessages = () => {
     if (!data) return;
 
-    if (window.confirm("Bạn muốn xoá tin nhắn này?")) {
+    if (window.confirm('Bạn muốn xoá tin nhắn này?')) {
       dispatch(deleteMessages({ msg, data, auth }));
     }
   };
@@ -36,7 +36,7 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
           {msg.text && (
             <div
               className="chat_text"
-              style={{ filter: theme ? "invert(1)" : "invert(0)" }}
+              style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
             >
               {msg.text}
             </div>
@@ -53,28 +53,30 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
         {msg.call && (
           <button
             className="btn d-flex align-items-center py-3"
-            style={{ background: "#eee", borderRadius: "10px" }}
+            style={{ background: '#eee', borderRadius: '10px' }}
           >
             <span
               className="material-icons font-weight-bold mr-1"
               style={{
-                fontSize: "2.5rem",
-                color: msg.call.times === 0 ? "crimson" : "green",
-                filter: theme ? "invert(1)" : "invert(0)",
+                fontSize: '2.5rem',
+                color: msg.call.times === 0 ? 'crimson' : 'green',
+                filter: theme ? 'invert(1)' : 'invert(0)',
               }}
             >
               {msg.call.times === 0
                 ? msg.call.video
-                  ? "videocam_off"
-                  : "phone_disabled"
+                  ? 'videocam_off'
+                  : 'phone_disabled'
                 : msg.call.video
-                ? "video_camera_front"
-                : "call"}
+                ? 'video_camera_front'
+                : 'call'}
             </span>
 
             <div className="text-left">
-              <h6>{msg.call.video ? "Video Call" : "Audio Call"}</h6>
-              <small>
+              <h6 style={{ color: '#000000' }}>
+                {msg.call.video ? 'Video Call' : 'Audio Call'}
+              </h6>
+              <small style={{ color: '#000000' }}>
                 {msg.call.times > 0 ? (
                   <Times total={msg.call.times} />
                 ) : (

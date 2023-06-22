@@ -176,6 +176,8 @@ label {
 
 @import url('./styles/meeting.css');
 
+@import url('./styles/call_modal.css');
+
 @import url('./styles/point.css');
 
 @import url('./styles/message.css');
