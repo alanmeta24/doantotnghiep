@@ -7,7 +7,7 @@ import {
   deleteDataAPI,
 } from '../../utils/fetchData';
 import { createNotify, removeNotify } from './notifyAction';
-import { CLASSROOM_TYPES } from './classroomAction';
+
 export const POST_TYPES = {
   CREATE_POST: 'CREATE_POST',
   LOADING_POST: 'LOADING_POST',
@@ -18,59 +18,37 @@ export const POST_TYPES = {
 };
 
 export const createPost =
-  ({ classroom, newPost, auth, socket }) =>
+  ({ content, images, auth, socket }) =>
   async (dispatch) => {
-    const newClassroom = {
-      ...classroom,
-      posts: [...classroom.posts, newPost],
-    };
-
-    dispatch({ type: CLASSROOM_TYPES.UPDATE_CLASSROOM, payload: newClassroom });
-
+    let media = [];
     try {
-      const data = {
-        ...newPost,
-        classroomId: classroom._id,
-        classroomUserId: classroom.user._id,
-      };
-      const res = await postDataAPI('post', data, auth.token);
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+      if (images.length > 0) media = await imageUpload(images);
 
-      const newData = { ...res.data.newPost, user: auth.user };
-      const newClassroom = {
-        ...classroom,
-        posts: [...classroom.posts, newData],
-      };
+      const res = await postDataAPI(
+        'posts',
+        { content, images: media },
+        auth.token,
+      );
+
       dispatch({
-        type: CLASSROOM_TYPES.UPDATE_CLASSROOM,
-        payload: newClassroom,
+        type: POST_TYPES.CREATE_POST,
+        payload: { ...res.data.newPost, user: auth.user },
       });
 
-      // dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-
-      // const res = await postDataAPI(
-      //   'posts',
-      //   { content, images: media },
-      //   auth.token,
-      // );
-
-      // dispatch({
-      //   type: POST_TYPES.CREATE_POST,
-      //   payload: { ...res.data.newPost, user: auth.user },
-      // });
-
-      // dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
 
       // Notify
-      // const msg = {
-      //   id: res.data.newPost._id,
-      //   text: 'đã thêm bài đăng mới.',
-      //   recipients: res.data.newPost.user.followers,
-      //   url: `/post/${res.data.newPost._id}`,
-      //   // content,
-      //   // image: media[0].url,
-      // };
+      const msg = {
+        id: res.data.newPost._id,
+        text: 'đã thêm bài đăng mới.',
+        recipients: res.data.newPost.user.followers,
+        url: `/post/${res.data.newPost._id}`,
+        content,
+        image: media[0].url,
+      };
 
-      // dispatch(createNotify({ msg, auth, socket }));
+      dispatch(createNotify({ msg, auth, socket }));
     } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,

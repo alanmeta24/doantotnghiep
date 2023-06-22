@@ -18,69 +18,31 @@ class APIfeatures {
 }
 
 const postCtrl = {
-  // createPost: async (req, res) => {
-  //   try {
-  //     const { content, images } = req.body;
-
-  //     if (images.length === 0)
-  //       return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
-
-  //     const newPost = new Posts({
-  //       content,
-  //       images,
-  //       user: req.user._id,
-  //     });
-  //     await newPost.save();
-
-  //     res.json({
-  //       msg: 'Created Post!',
-  //       newPost: {
-  //         ...newPost._doc,
-  //         user: req.user,
-  //       },
-  //     });
-  //   } catch (err) {
-  //     return res.status(500).json({ msg: err.message });
-  //   }
-  // },
-
   createPost: async (req, res) => {
     try {
-      const { content, images, classroomId, classroomUserId } = req.body;
-
-      const classroom = await Classrooms.findById(classroomId);
-
-      if (!classroom)
-        return res.status(400).json({ msg: 'Lớp học không tồn tại.' });
+      const { content, images } = req.body;
 
       if (images.length === 0)
         return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
 
       const newPost = new Posts({
-        user: req.user._id,
         content,
         images,
-        classroomUserId,
-        classroomId,
+        user: req.user._id,
       });
-
-      await Classrooms.findOneAndUpdate(
-        { _id: classroomId },
-        {
-          $push: { posts: newPost._id },
-        },
-        { new: true },
-      );
-
       await newPost.save();
 
-      res.json({ newPost });
-      // console.log({ newPost });
+      res.json({
+        msg: 'Created Post!',
+        newPost: {
+          ...newPost._doc,
+          user: req.user,
+        },
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-
   getPosts: async (req, res) => {
     try {
       const features = new APIfeatures(
@@ -223,43 +185,16 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  // getPostsDicover: async (req, res) => {
-  //   try {
-  //     const newArr = [...req.user.following, req.user._id];
-
-  //     const num = req.query.num || 9;
-
-  //     const posts = await Posts.aggregate([
-  //       { $match: { user: { $nin: newArr } } },
-  //       { $sample: { size: Number(num) } },
-  //     ]);
-
-  //     return res.json({
-  //       msg: 'Thành công!',
-  //       result: posts.length,
-  //       posts,
-  //     });
-  //   } catch (err) {
-  //     return res.status(500).json({ msg: err.message });
-  //   }
-  // },
   getPostsDicover: async (req, res) => {
     try {
-      const features = new APIfeatures(
-        Posts.find({ user: { $nin: [...req.user.following, req.user._id] } }),
-        req.query,
-      ).paginating();
+      const newArr = [...req.user.following, req.user._id];
 
-      const posts = await features.query
-        .sort('-createAt')
-        .populate('user likes', 'avatar username fullname followers')
-        .populate({
-          path: 'comments',
-          populate: {
-            path: 'user likes',
-            select: '-password',
-          },
-        });
+      const num = req.query.num || 9;
+
+      const posts = await Posts.aggregate([
+        { $match: { user: { $nin: newArr } } },
+        { $sample: { size: Number(num) } },
+      ]);
 
       return res.json({
         msg: 'Thành công!',

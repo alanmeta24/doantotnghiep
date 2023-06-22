@@ -38,10 +38,7 @@ const ClassDetail = ({ classroom }) => {
               </div>
               <div className="main__text">
                 <h1 className="main__heading main__overflow">
-                  Tên lớp:{' '}
-                  <span style={{ textTransform: 'uppercase' }}>
-                    {classroom.className}
-                  </span>
+                  Tên lớp: <span>{classroom.className}</span>
                 </h1>
                 <div className="main__section main__overflow">
                   Môn học: {classroom.subject}

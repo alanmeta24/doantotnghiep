@@ -158,13 +158,16 @@
   width: 50% !important;
   padding: 1% 3%;
 }
+.home {
+  margin: 0 9% !important;
+}
 
 .home_page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 1.9%;
+  margin: 1% 2% 1% 4%;
 }
 
 .home_page_left {
@@ -226,4 +229,10 @@
 }
 .btn-loading-close:focus {
   outline: none;
+}
+
+.main_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

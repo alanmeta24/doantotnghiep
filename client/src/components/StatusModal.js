@@ -5,7 +5,7 @@ import { createPost, updatePost } from '../redux/actions/postAction';
 import Icons from './Icons';
 import { imageShow, videoShow } from '../utils/mediaShow';
 
-const PostInput = ({ children, classroom }) => {
+const StatusModal = () => {
   const { auth, theme, status, socket } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -83,17 +83,15 @@ const PostInput = ({ children, classroom }) => {
         type: GLOBALTYPES.ALERT,
         payload: { error: 'Vui Lòng Thêm Ảnh Của Bạn.' },
       });
+
+    if (status.onEdit) {
+      dispatch(updatePost({ content, images, auth, status }));
+    } else {
+      dispatch(createPost({ content, images, auth, socket }));
+    }
+
     setContent('');
     setImages([]);
-
-    const newPost = {
-      content,
-      images: [],
-      user: auth.user,
-    };
-
-    dispatch(createPost({ classroom, newPost, auth, socket }));
-
     if (tracks) tracks.stop();
     dispatch({ type: GLOBALTYPES.STATUS, payload: false });
   };
@@ -108,7 +106,6 @@ const PostInput = ({ children, classroom }) => {
   return (
     <div className="status_modal">
       <form onSubmit={handleSubmit}>
-        {children}
         <div className="status_header">
           <h5 className="m-0">Tạo Bài Đăng</h5>
           <span
@@ -213,4 +210,4 @@ const PostInput = ({ children, classroom }) => {
   );
 };
 
-export default PostInput;
+export default StatusModal;
