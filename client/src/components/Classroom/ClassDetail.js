@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UTC2 from '../../assets/images/uct2.png';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
-import Posts from '../home/Posts';
 import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
 import TweetInput from '../home/TweetInput';
 import Tweets from '../home/Tweets';
+import Posts from '../home/Posts';
 
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
@@ -64,9 +64,12 @@ const ClassDetail = ({ classroom }) => {
               {/* {status && <StatusModal classroom={classroom} />} */}
               <div className="main__ancContent">
                 <TweetInput classroom={classroom} />
+                {/* <StatusModal classroom={classroom} /> */}
               </div>
 
               <Tweets classroom={classroom} />
+
+              {/* <Posts classroom={classroom} /> */}
             </div>
           </div>
         </div>

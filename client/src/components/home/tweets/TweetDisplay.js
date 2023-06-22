@@ -4,11 +4,7 @@ import TweetCard from './TweetCard';
 const TweetDisplay = ({ tweet, classroom }) => {
   return (
     <div className="comment_display">
-      <TweetCard
-        tweet={tweet}
-        classroom={classroom}
-        tweetId={tweet._id}
-      ></TweetCard>
+      <TweetCard tweet={tweet} classroom={classroom}></TweetCard>
     </div>
   );
 };

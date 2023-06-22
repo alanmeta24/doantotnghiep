@@ -6,7 +6,7 @@ import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateTweet } from '../../../redux/actions/tweetAction';
 
-const TweetCard = ({ children, tweet, classroom, tweetId }) => {
+const TweetCard = ({ children, tweet, classroom }) => {
   const { auth, theme } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -17,16 +17,7 @@ const TweetCard = ({ children, tweet, classroom, tweetId }) => {
 
   useEffect(() => {
     setContent(tweet.content);
-  }, [tweet, auth.user._id]);
-
-  const handleUpdate = () => {
-    if (tweet.content !== content) {
-      dispatch(updateTweet({ tweet, classroom, content, auth }));
-      setOnEdit(false);
-    } else {
-      setOnEdit(false);
-    }
-  };
+  }, [tweet]);
 
   return (
     <div className="comment_card mt-2">
@@ -37,51 +28,7 @@ const TweetCard = ({ children, tweet, classroom, tweetId }) => {
 
       <div className="comment_content">
         <div className="flex-fill">
-          {/* {onEdit ? ( */}
-          <textarea
-            rows="5"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          {/* ) : (
-            <div>
-              <span>
-                {content.length < 100
-                  ? content
-                  : readMore
-                  ? content + ' '
-                  : content.slice(0, 100) + '....'}
-              </span>
-              {content.length > 100 && (
-                <span
-                  className="readMore"
-                  onClick={() => setReadMore(!readMore)}
-                >
-                  {readMore ? 'Hide content' : 'Read more'}
-                </span>
-              )}
-            </div>
-          )} */}
-
-          <div style={{ cursor: 'pointer' }}>
-            {/* <small className="text-muted mr-3">
-              {moment(tweet.createdAt).fromNow()}
-            </small> */}
-
-            {onEdit && (
-              <>
-                <small className="font-weight-bold mr-3" onClick={handleUpdate}>
-                  Cập nhật
-                </small>
-                <small
-                  className="font-weight-bold mr-3"
-                  onClick={() => setOnEdit(false)}
-                >
-                  Huỷ
-                </small>
-              </>
-            )}
-          </div>
+          <span>{content}</span>
         </div>
       </div>
       {children}
