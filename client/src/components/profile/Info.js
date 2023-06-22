@@ -44,8 +44,8 @@ const Info = ({ id, auth, profile, dispatch }) => {
                 </div>
               </div>
               <div className="profile_avatar_info">
-                <h4>{user.fullname}</h4>
                 <h4>@{user.username}</h4>
+                <h4>{user.fullname}</h4>
               </div>
               <div className="container_content-title">
                 {user._id === auth.user._id ? (
@@ -62,7 +62,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
             </div>
           </div>
 
-          <div className="info_status">Comingsoon...</div>
+          <div className="info_status">Coming Soon...</div>
           {onEdit && <EditProfile setOnEdit={setOnEdit} />}
 
           {showFollowers && (
