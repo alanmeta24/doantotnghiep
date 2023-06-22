@@ -44,7 +44,7 @@ const ClassCard = ({ classroom }) => {
 
                 <>
                   <div className="dropdown-item">Chỉnh sửa</div>
-                  <div className="dropdown-item">Xoá</div>
+                  <div className="dropdown-item">Sao chép</div>
                 </>
               </div>
             </div>
