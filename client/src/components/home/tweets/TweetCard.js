@@ -30,20 +30,20 @@ const TweetCard = ({ children, tweet, classroom, tweetId }) => {
 
   return (
     <div className="comment_card mt-2">
-      <Link to={`/profile/${tweet.user._id}`} className="d-flex text-dark">
-        <Avatar src={tweet.user.avatar} size="small-avatar" />
-        <h6 className="mx-1">{tweet.user.username}</h6>
+      <Link to={`/profile/${auth.user._id}`} className="d-flex text-dark">
+        <Avatar src={auth.user.avatar} size="small-avatar" />
+        <h6 className="mx-1">{auth.user.username}</h6>
       </Link>
 
       <div className="comment_content">
         <div className="flex-fill">
-          {onEdit ? (
-            <textarea
-              rows="5"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-          ) : (
+          {/* {onEdit ? ( */}
+          <textarea
+            rows="5"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          {/* ) : (
             <div>
               <span>
                 {content.length < 100
@@ -61,7 +61,7 @@ const TweetCard = ({ children, tweet, classroom, tweetId }) => {
                 </span>
               )}
             </div>
-          )}
+          )} */}
 
           <div style={{ cursor: 'pointer' }}>
             {/* <small className="text-muted mr-3">

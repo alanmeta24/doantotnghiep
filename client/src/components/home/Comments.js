@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import CommentDisplay from "./comments/CommentDisplay";
+import React, { useState, useEffect } from 'react';
+import CommentDisplay from './comments/CommentDisplay';
 
 const Comments = ({ post }) => {
   const [comments, setComments] = useState([]);
@@ -33,7 +33,7 @@ const Comments = ({ post }) => {
       {comments.length - next > 0 ? (
         <div
           className="p-2 border-top"
-          style={{ cursor: "pointer", color: "crimson" }}
+          style={{ cursor: 'pointer', color: 'crimson' }}
           onClick={() => setNext(next + 10)}
         >
           Xem thêm bình luận...
@@ -42,7 +42,7 @@ const Comments = ({ post }) => {
         comments.length > 2 && (
           <div
             className="p-2 border-top"
-            style={{ cursor: "pointer", color: "crimson" }}
+            style={{ cursor: 'pointer', color: 'crimson' }}
             onClick={() => setNext(2)}
           >
             Ẩn bình luận...
