@@ -31,13 +31,13 @@ const Profile = () => {
 
           {auth.user._id === id && (
             <div className="profile_tab">
-              <button
+              <span
                 className={`btn saveTab ? 'active' : ''`}
                 onClick={() => setSaveTab(true)}
                 style={{ color: 'black' }}
               >
                 Bài viết đã lưu
-              </button>
+              </span>
             </div>
           )}
 
@@ -48,18 +48,7 @@ const Profile = () => {
               className="d-block mx-auto my-4"
             />
           ) : (
-            <>
-              {saveTab ? (
-                <Saved auth={auth} dispatch={dispatch} />
-              ) : (
-                <Posts
-                  auth={auth}
-                  profile={profile}
-                  dispatch={dispatch}
-                  id={id}
-                />
-              )}
-            </>
+            <>{saveTab && <Saved auth={auth} dispatch={dispatch} />}</>
           )}
         </div>
       </div>

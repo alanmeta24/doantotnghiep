@@ -160,6 +160,8 @@ label {
 
 @import url('./styles/home.css');
 
+@import url('./styles/icons.css');
+
 @import url('./styles/status-modal.css');
 
 @import url('./styles/comments.css');

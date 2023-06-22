@@ -301,9 +301,11 @@
 .info_status {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  grid-gap: 0.25rem;
   gap: 0.25rem;
+  padding: 0 0 0 27px;
 }
 
 .info_status > hr {
@@ -344,4 +346,9 @@
 .info_card > span:nth-of-type(2) {
   color: var(--gray);
   font-size: 13px;
+}
+
+.data_info {
+  color: #000;
+  font-weight: 700;
 }

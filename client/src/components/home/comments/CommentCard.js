@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import Avatar from "../../Avatar";
-import { Link } from "react-router-dom";
-import moment from "moment";
+import React, { useState, useEffect } from 'react';
+import Avatar from '../../Avatar';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
-import LikeButton from "../../LikeButton";
-import { useSelector, useDispatch } from "react-redux";
-import CommentMenu from "./CommentMenu";
+import LikeButton from '../../LikeButton';
+import { useSelector, useDispatch } from 'react-redux';
+import CommentMenu from './CommentMenu';
 import {
   updateComment,
   likeComment,
   unLikeComment,
-} from "../../../redux/actions/commentAction";
-import InputComment from "../InputComment";
+} from '../../../redux/actions/commentAction';
+import InputComment from '../InputComment';
 
 const CommentCard = ({ children, comment, post, commentId }) => {
   const { auth, theme } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [readMore, setReadMore] = useState(false);
 
   const [onEdit, setOnEdit] = useState(false);
@@ -69,7 +69,7 @@ const CommentCard = ({ children, comment, post, commentId }) => {
 
   const styleCard = {
     opacity: comment._id ? 1 : 0.5,
-    pointerEvents: comment._id ? "inherit" : "none",
+    pointerEvents: comment._id ? 'inherit' : 'none',
   };
 
   return (
@@ -83,8 +83,8 @@ const CommentCard = ({ children, comment, post, commentId }) => {
         <div
           className="flex-fill"
           style={{
-            filter: theme ? "invert(1)" : "invert(0)",
-            color: theme ? "white" : "#111",
+            filter: theme ? 'invert(1)' : 'invert(0)',
+            color: theme ? 'white' : '#111',
           }}
         >
           {onEdit ? (
@@ -104,21 +104,21 @@ const CommentCard = ({ children, comment, post, commentId }) => {
                 {content.length < 100
                   ? content
                   : readMore
-                  ? content + " "
-                  : content.slice(0, 100) + "...."}
+                  ? content + ' '
+                  : content.slice(0, 100) + '....'}
               </span>
               {content.length > 100 && (
                 <span
                   className="readMore"
                   onClick={() => setReadMore(!readMore)}
                 >
-                  {readMore ? "Hide content" : "Read more"}
+                  {readMore ? 'Ẩn' : 'Xem thêm'}
                 </span>
               )}
             </div>
           )}
 
-          <div style={{ cursor: "pointer" }}>
+          <div style={{ cursor: 'pointer' }}>
             <small className="text-muted mr-3">
               {moment(comment.createdAt).fromNow()}
             </small>
@@ -141,7 +141,7 @@ const CommentCard = ({ children, comment, post, commentId }) => {
               </>
             ) : (
               <small className="font-weight-bold mr-3" onClick={handleReply}>
-                {onReply ? "Huỷ" : "Trả Lời"}
+                {onReply ? 'Huỷ' : 'Trả Lời'}
               </small>
             )}
           </div>
@@ -149,7 +149,7 @@ const CommentCard = ({ children, comment, post, commentId }) => {
 
         <div
           className="d-flex align-items-center mx-2"
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         >
           <CommentMenu post={post} comment={comment} setOnEdit={setOnEdit} />
           <LikeButton

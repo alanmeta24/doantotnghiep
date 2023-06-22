@@ -20,12 +20,13 @@ class APIfeatures {
 const postCtrl = {
   createPost: async (req, res) => {
     try {
-      const { content, images } = req.body;
+      const { title, content, images } = req.body;
 
       if (images.length === 0)
         return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
 
       const newPost = new Posts({
+        title,
         content,
         images,
         user: req.user._id,
@@ -74,11 +75,12 @@ const postCtrl = {
   },
   updatePost: async (req, res) => {
     try {
-      const { content, images } = req.body;
+      const { title, content, images } = req.body;
 
       const post = await Posts.findOneAndUpdate(
         { _id: req.params.id },
         {
+          title,
           content,
           images,
         },
@@ -96,6 +98,7 @@ const postCtrl = {
         msg: 'Cập nhật thành công!',
         newPost: {
           ...post._doc,
+          title,
           content,
           images,
         },

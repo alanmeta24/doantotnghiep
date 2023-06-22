@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Send from "../../../images/send.svg";
-import LikeButton from "../../LikeButton";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Send from '../../../images/send.svg';
+import LikeButton from '../../LikeButton';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   likePost,
   unLikePost,
   savePost,
   unSavePost,
-} from "../../../redux/actions/postAction";
-import ShareModal from "../../ShareModal";
-import { BASE_URL } from "../../../utils/config";
+} from '../../../redux/actions/postAction';
+import ShareModal from '../../ShareModal';
+import { BASE_URL } from '../../../utils/config';
 
 const CardFooter = ({ post }) => {
   const [isLike, setIsLike] = useState(false);
@@ -83,16 +83,16 @@ const CardFooter = ({ post }) => {
             handleLike={handleLike}
             handleUnLike={handleUnLike}
           />
-
+          {/* 
           <Link to={`/post/${post._id}`} className="text-dark">
             <i className="far fa-comments" />
-          </Link>
-
+          </Link> */}
+          {/* 
           <i
             className="far fa-share-square"
             src={Send}
             onClick={() => setIsShare(!isShare)}
-          />
+          /> */}
 
           {/* <img src={Send} alt="Send" onClick={() => setIsShare(!isShare)} /> */}
         </div>
@@ -105,11 +105,11 @@ const CardFooter = ({ post }) => {
       </div>
 
       <div className="d-flex justify-content-between">
-        <h6 style={{ padding: "0 25px", cursor: "pointer" }}>
+        <h6 style={{ padding: '0 25px', cursor: 'pointer' }}>
           {post.likes.length} Thích
         </h6>
 
-        <h6 style={{ padding: "0 25px", cursor: "pointer" }}>
+        <h6 style={{ padding: '0 25px', cursor: 'pointer' }}>
           {post.comments.length} Bình luận
         </h6>
       </div>

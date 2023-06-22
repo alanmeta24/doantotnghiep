@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Helmet from '../components/Helmet';
 import {
   getDiscoverPosts,
   DISCOVER_TYPES,
@@ -50,43 +51,49 @@ const Discover = () => {
   };
 
   return (
-    <div className="home row mx-0">
-      <div className="col-md-7">
-        <Status />
-        {homePosts.loading ? (
-          <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
-        ) : homePosts.result === 0 && homePosts.posts.length === 0 ? (
-          <h2 className="text-center">Không có bài viết</h2>
-        ) : (
-          <Posts />
-        )}
-      </div>
-      <div className="col-md-5">
-        <div style={{ marginTop: '30px' }}>
-          <UserCard user={auth.user} />
+    <Helmet title="Diễn đàn">
+      <div className="home row mx-0">
+        <div className="col-md-7">
+          <Status />
+          {homePosts.loading ? (
+            <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+          ) : homePosts.result === 0 && homePosts.posts.length === 0 ? (
+            <h2 className="text-center">Không có bài viết</h2>
+          ) : (
+            <Posts />
+          )}
         </div>
+        <div className="col-md-5">
+          <div style={{ marginTop: '30px' }}>
+            <UserCard user={auth.user} />
+          </div>
 
-        <h5 className="text-left" style={{ marginTop: '10px' }}>
-          Các bài viết gần đây
-        </h5>
-        {discover.loading ? (
-          <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
-        ) : (
-          <PostThumb posts={discover.posts} result={discover.result} />
-        )}
-        {load && (
-          <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
-        )}
-        {!discover.loading && (
-          <LoadMoreBtn
-            result={discover.result}
-            page={discover.page}
-            load={load}
-            handleLoadMore={handleLoadMore}
-          />
-        )}
+          <h5 className="text-left" style={{ marginTop: '10px' }}>
+            Các bài viết gần đây
+          </h5>
+          {discover.loading ? (
+            <img
+              src={LoadIcon}
+              alt="loading"
+              className="d-block mx-auto my-4"
+            />
+          ) : (
+            <PostThumb posts={discover.posts} result={discover.result} />
+          )}
+          {load && (
+            <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+          )}
+          {!discover.loading && (
+            <LoadMoreBtn
+              result={discover.result}
+              page={discover.page}
+              load={load}
+              handleLoadMore={handleLoadMore}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </Helmet>
   );
 };
 

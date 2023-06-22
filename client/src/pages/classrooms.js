@@ -11,7 +11,7 @@ const Classrooms = () => {
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
-    <Helmet title="Danh sách lớp">
+    <Helmet title="Lớp học">
       <div className="home_page ">
         {/* <div className="home_page_middle">
           {homeClasses.loading ? (

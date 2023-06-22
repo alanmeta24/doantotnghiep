@@ -45,7 +45,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
               </div>
               <div className="profile_avatar_info">
                 <h4>@{user.username}</h4>
-                <h4>{user.fullname}</h4>
+                {/* <h4>{user.fullname}</h4> */}
               </div>
               <div className="container_content-title">
                 {user._id === auth.user._id ? (
@@ -62,21 +62,22 @@ const Info = ({ id, auth, profile, dispatch }) => {
             </div>
           </div>
 
-          <div className="info_status">Coming Soon...</div>
+          <div className="info_status">
+            <span>Yêu màu hồng và ghét sự giả dối </span>
+            <span>
+              Họ và tên: <span className="data_info">{user.fullname}</span>
+            </span>
+            <span>
+              username: <span className="data_info">{user.username}</span>@
+            </span>
+            <span>
+              Email: <span className="data_info"> {user.email}</span>
+            </span>
+            <span>
+              Số điện thoại: <span className="data_info"> {user.phone}</span>
+            </span>
+          </div>
           {onEdit && <EditProfile setOnEdit={setOnEdit} />}
-
-          {showFollowers && (
-            <Followers
-              users={user.followers}
-              setShowFollowers={setShowFollowers}
-            />
-          )}
-          {showFollowing && (
-            <Following
-              users={user.following}
-              setShowFollowing={setShowFollowing}
-            />
-          )}
         </div>
       ))}
     </div>

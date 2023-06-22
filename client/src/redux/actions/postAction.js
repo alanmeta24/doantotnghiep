@@ -18,7 +18,7 @@ export const POST_TYPES = {
 };
 
 export const createPost =
-  ({ content, images, auth, socket }) =>
+  ({ title, content, images, auth, socket }) =>
   async (dispatch) => {
     let media = [];
     try {
@@ -27,7 +27,7 @@ export const createPost =
 
       const res = await postDataAPI(
         'posts',
-        { content, images: media },
+        { title, content, images: media },
         auth.token,
       );
 
@@ -44,6 +44,7 @@ export const createPost =
         text: 'đã thêm bài đăng mới.',
         recipients: res.data.newPost.user.followers,
         url: `/post/${res.data.newPost._id}`,
+        title,
         content,
         image: media[0].url,
       };
@@ -77,7 +78,7 @@ export const getPosts = (token) => async (dispatch) => {
 };
 
 export const updatePost =
-  ({ content, images, auth, status }) =>
+  ({ title, content, images, auth, status }) =>
   async (dispatch) => {
     let media = [];
     const imgNewUrl = images.filter((img) => !img.url);
@@ -97,6 +98,7 @@ export const updatePost =
       const res = await patchDataAPI(
         `post/${status._id}`,
         {
+          title,
           content,
           images: [...imgOldUrl, ...media],
         },
@@ -131,6 +133,7 @@ export const likePost =
         text: 'thích bài đăng của bạn.',
         recipients: [post.user._id],
         url: `/post/${post._id}`,
+        title: post.title,
         content: post.content,
         image: post.images[0].url,
       };
