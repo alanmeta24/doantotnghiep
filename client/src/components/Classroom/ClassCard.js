@@ -50,7 +50,7 @@ const ClassCard = ({ classroom }) => {
           </div>
         </Link>
         <div className="joined__avatar">
-          <Avatar src={auth.user.avatar} size="big-avatar" />
+          <Avatar src={auth.user.avatar} size="class-avatar" />
         </div>
 
         <p className="joined__owner" style={{ color: 'black' }}>
