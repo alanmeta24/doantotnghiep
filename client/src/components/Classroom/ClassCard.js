@@ -53,15 +53,17 @@ const ClassCard = ({ classroom }) => {
           <Avatar src={auth.user.avatar} size="class-avatar" />
         </div>
 
-        <p className="joined__owner" style={{ color: 'black' }}>
-          Môn học: Lập trình hướng đối tượng
-        </p>
-        <p className="joined__owner" style={{ color: 'black' }}>
-          Học kì: HKI
-        </p>
-        <p className="joined__owner" style={{ color: 'black' }}>
-          Giảng viên: Trần Thị Dung
-        </p>
+        <div className="text_title">
+          <p className="joined__owner" style={{ color: 'black' }}>
+            Môn học: Lập trình hướng đối tượng
+          </p>
+          <p className="joined__owner" style={{ color: 'black' }}>
+            Học kì: HKI
+          </p>
+          <p className="joined__owner" style={{ color: 'black' }}>
+            Giảng viên: Trần Thị Dung
+          </p>
+        </div>
       </div>
       {/* <div className="joined__bottom">
         <PermContactCalendar />
