@@ -8,16 +8,16 @@ import {
 } from '../../utils/fetchData';
 import { createNotify, removeNotify } from './notifyAction';
 
-export const POST_TYPES = {
-  CREATE_POST: 'CREATE_POST',
-  LOADING_POST: 'LOADING_POST',
-  GET_POSTS: 'GET_POSTS',
-  UPDATE_POST: 'UPDATE_POST',
-  GET_POST: 'GET_POST',
-  DELETE_POST: 'DELETE_POST',
+export const POSTCLASS_TYPES = {
+  CREATE_POSTCLASS: 'CREATE_POSTCLASS',
+  LOADING_POSTCLASS: 'LOADING_POSTCLASS',
+  GET_POSTCLASSROOMS: 'GET_POSTCLASSROOMS',
+  UPDATE_POSTCLASS: 'UPDATE_POSTCLASS',
+  GET_POSTCLASS: 'GET_POSTCLASS',
+  DELETE_POSTCLASS: 'DELETE_POSTCLASS',
 };
 export const createPost =
-  ({ title, content, images, auth, socket }) =>
+  ({ content, images, auth, socket }) =>
   async (dispatch) => {
     let media = [];
     try {
@@ -25,25 +25,24 @@ export const createPost =
       if (images.length > 0) media = await imageUpload(images);
 
       const res = await postDataAPI(
-        'posts',
-        { title, content, images: media },
+        'postclassrooms',
+        { content, images: media },
         auth.token,
       );
 
       dispatch({
-        type: POST_TYPES.CREATE_POST,
-        payload: { ...res.data.newPost, user: auth.user },
+        type: POSTCLASS_TYPES.CREATE_POSTCLASS,
+        payload: { ...res.data.newPostclass, user: auth.user },
       });
 
       dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
 
       // Notify
       const msg = {
-        id: res.data.newPost._id,
+        id: res.data.newPostclass._id,
         text: 'đã thêm bài đăng mới.',
-        recipients: res.data.newPost.user.followers,
-        url: `/post/${res.data.newPost._id}`,
-        title,
+        recipients: res.data.newPostclass.user.followers,
+        url: `/postclassroom/${res.data.newPostclass._id}`,
         content,
         image: media[0].url,
       };
@@ -59,15 +58,15 @@ export const createPost =
 
 export const getPosts = (token) => async (dispatch) => {
   try {
-    dispatch({ type: POST_TYPES.LOADING_POST, payload: true });
-    const res = await getDataAPI('posts', token);
+    dispatch({ type: POSTCLASS_TYPES.LOADING_POSTCLASS, payload: true });
+    const res = await getDataAPI('postclassrooms', token);
 
     dispatch({
-      type: POST_TYPES.GET_POSTS,
+      type: POSTCLASS_TYPES.GET_POSTCLASSROOMS,
       payload: { ...res.data, page: 2 },
     });
 
-    dispatch({ type: POST_TYPES.LOADING_POST, payload: false });
+    dispatch({ type: POSTCLASS_TYPES.LOADING_POSTCLASS, payload: false });
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
@@ -77,7 +76,7 @@ export const getPosts = (token) => async (dispatch) => {
 };
 
 export const updatePost =
-  ({ title, content, images, auth, status }) =>
+  ({ content, images, auth, status }) =>
   async (dispatch) => {
     let media = [];
     const imgNewUrl = images.filter((img) => !img.url);
@@ -95,16 +94,18 @@ export const updatePost =
       if (imgNewUrl.length > 0) media = await imageUpload(imgNewUrl);
 
       const res = await patchDataAPI(
-        `post/${status._id}`,
+        `postclassroom/${status._id}`,
         {
-          title,
           content,
           images: [...imgOldUrl, ...media],
         },
         auth.token,
       );
 
-      dispatch({ type: POST_TYPES.UPDATE_POST, payload: res.data.newPost });
+      dispatch({
+        type: POSTCLASS_TYPES.UPDATE_POSTCLASS,
+        payload: res.data.newPostclass,
+      });
 
       dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } });
     } catch (err) {
@@ -118,21 +119,20 @@ export const updatePost =
 export const likePost =
   ({ post, auth, socket }) =>
   async (dispatch) => {
-    const newPost = { ...post, likes: [...post.likes, auth.user] };
-    dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
+    const newPostclass = { ...post, likes: [...post.likes, auth.user] };
+    dispatch({ type: POSTCLASS_TYPES.UPDATE_POSTCLASS, payload: newPostclass });
 
-    socket.emit('likePost', newPost);
+    socket.emit('likePost', newPostclass);
 
     try {
-      await patchDataAPI(`post/${post._id}/like`, null, auth.token);
+      await patchDataAPI(`postclassroom/${post._id}/like`, null, auth.token);
 
       // Notify
       const msg = {
         id: auth.user._id,
         text: 'thích bài đăng của bạn.',
         recipients: [post.user._id],
-        url: `/post/${post._id}`,
-        title: post.title,
+        url: `/postclassroom/${post._id}`,
         content: post.content,
         image: post.images[0].url,
       };
@@ -149,23 +149,23 @@ export const likePost =
 export const unLikePost =
   ({ post, auth, socket }) =>
   async (dispatch) => {
-    const newPost = {
+    const newPostclass = {
       ...post,
       likes: post.likes.filter((like) => like._id !== auth.user._id),
     };
-    dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
+    dispatch({ type: POSTCLASS_TYPES.UPDATE_POSTCLASS, payload: newPostclass });
 
-    socket.emit('unLikePost', newPost);
+    socket.emit('unLikePost', newPostclass);
 
     try {
-      await patchDataAPI(`post/${post._id}/unlike`, null, auth.token);
+      await patchDataAPI(`postclassroom/${post._id}/unlike`, null, auth.token);
 
       // Notify
       const msg = {
         id: auth.user._id,
         text: 'thích bài đăng của bạn.',
         recipients: [post.user._id],
-        url: `/post/${post._id}`,
+        url: `/postclassroom/${post._id}`,
       };
       dispatch(removeNotify({ msg, auth, socket }));
     } catch (err) {
@@ -181,8 +181,11 @@ export const getPost =
   async (dispatch) => {
     if (detailPost.every((post) => post._id !== id)) {
       try {
-        const res = await getDataAPI(`post/${id}`, auth.token);
-        dispatch({ type: POST_TYPES.GET_POST, payload: res.data.post });
+        const res = await getDataAPI(`postclassroom/${id}`, auth.token);
+        dispatch({
+          type: POSTCLASS_TYPES.GET_POSTCLASS,
+          payload: res.data.post,
+        });
       } catch (err) {
         dispatch({
           type: GLOBALTYPES.ALERT,
@@ -195,17 +198,17 @@ export const getPost =
 export const deletePost =
   ({ post, auth, socket }) =>
   async (dispatch) => {
-    dispatch({ type: POST_TYPES.DELETE_POST, payload: post });
+    dispatch({ type: POSTCLASS_TYPES.DELETE_POSTCLASS, payload: post });
 
     try {
-      const res = await deleteDataAPI(`post/${post._id}`, auth.token);
+      const res = await deleteDataAPI(`postclassroom/${post._id}`, auth.token);
 
       // Notify
       const msg = {
         id: post._id,
         text: 'đã thêm bài đăng mới.',
-        recipients: res.data.newPost.user.followers,
-        url: `/post/${post._id}`,
+        recipients: res.data.newPostclass.user.followers,
+        url: `/postclassroom/${post._id}`,
       };
       dispatch(removeNotify({ msg, auth, socket }));
     } catch (err) {
@@ -223,7 +226,7 @@ export const savePost =
     dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } });
 
     try {
-      await patchDataAPI(`savePost/${post._id}`, null, auth.token);
+      await patchDataAPI(`savePostClassroom/${post._id}`, null, auth.token);
     } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,
@@ -242,7 +245,7 @@ export const unSavePost =
     dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } });
 
     try {
-      await patchDataAPI(`unSavePost/${post._id}`, null, auth.token);
+      await patchDataAPI(`unSavePostClassroom/${post._id}`, null, auth.token);
     } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,

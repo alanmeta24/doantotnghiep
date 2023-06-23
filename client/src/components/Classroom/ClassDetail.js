@@ -7,11 +7,11 @@ import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
 import TweetInput from '../home/TweetInput';
 import Tweets from '../home/Tweets';
-import Posts from '../home/Posts';
+import PostClassrooms from '../home/PostClassrooms';
 
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
-  const { homePosts, status } = useSelector((state) => state);
+  const { postClassrooms, status } = useSelector((state) => state);
 
   window.addEventListener('scroll', () => {
     if (window.location.pathname === '/') {
@@ -57,16 +57,46 @@ const ClassDetail = ({ classroom }) => {
                 <span className="material-icons">content_copy</span>
               </div>
             </div>
-            <div className="main__announcementsWrapper">
-              {/* {status && <StatusModal classroom={classroom} />} */}
+            {/* <div className="main__announcementsWrapper">
+         
               <div className="main__ancContent">
-                <TweetInput classroom={classroom} />
-                {/* <StatusModal classroom={classroom} /> */}
+                <TweetInput />
+              
               </div>
 
               <Tweets classroom={classroom} />
 
-              {/* <Posts classroom={classroom} /> */}
+            
+            </div> */}
+            <div className="main__announcementsWrapper">
+              <div className="main__ancContent">
+                <div
+                  className="main__wrapper100"
+                  onClick={() =>
+                    dispatch({
+                      type: GLOBALTYPES.STATUS_POSTCLASS,
+                      payload: true,
+                    })
+                  }
+                >
+                  <Avatar src={auth.user.avatar} size="big-avatar" />
+                  <div>Thông báo nội dung nào đó cho lớp học của bạn</div>
+                </div>
+              </div>
+              <div className="main__announce ">
+                {postClassrooms.loading ? (
+                  <img
+                    src={LoadIcon}
+                    alt="loading"
+                    className="d-block mx-auto"
+                  />
+                ) : postClassrooms.result === 0 &&
+                  postClassrooms.postclassrooms.length === 0 ? (
+                  <h2 className="text-center">Không Có Bài Đăng</h2>
+                ) : (
+                  <PostClassrooms />
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -4,11 +4,12 @@ import Avatar from '../Avatar';
 import EditProfile from './EditProfile';
 import Followers from './Followers';
 import Following from './Following';
-
+import { useDispatch, useSelector } from 'react-redux';
 import ImgBuilding from '../../assets/images/building.jpg';
 import FollowBtn from '../FollowBtn';
 
 const Info = ({ id, auth, profile, dispatch }) => {
+  // const { auth } = useSelector((state) => state);
   const [userData, setUserData] = useState([]);
   const [onEdit, setOnEdit] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
@@ -66,6 +67,11 @@ const Info = ({ id, auth, profile, dispatch }) => {
             <span>Yêu màu hồng và ghét sự giả dối </span>
             <span>
               Họ và tên: <span className="data_info">{user.fullname}</span>
+              {auth.user.role !== 'user' ? (
+                <span> (giảng viên)</span>
+              ) : (
+                <span> (Sinh viên)</span>
+              )}
             </span>
             <span>
               username: <span className="data_info">{user.username}</span>@

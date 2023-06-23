@@ -31,11 +31,11 @@ import CallModal from './components/message/CallModal';
 import Peer from 'peerjs';
 import ClassModal from './components/Classroom/ClassModal';
 import OpenHeaderDetail from './components/Exercise/OpenHeaderDetail';
+import PostclassModal from './components/PostclassModal';
 
 function App() {
-  const { auth, status, status_class, modal, call } = useSelector(
-    (state) => state,
-  );
+  const { auth, status, status_class, status_postclass, modal, call } =
+    useSelector((state) => state);
   const { isLogged } = auth;
 
   const dispatch = useDispatch();
@@ -91,6 +91,7 @@ function App() {
           {auth.token && <Header />}
           {status && <StatusModal />}
           {status_class && <ClassModal />}
+          {status_postclass && <PostclassModal />}
           {auth.token && <SocketClient />}
           {call && <CallModal />}
           <Body />

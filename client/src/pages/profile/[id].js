@@ -31,13 +31,13 @@ const Profile = () => {
 
           {auth.user._id === id && (
             <div className="profile_tab">
-              <span
-                className={`btn saveTab ? 'active' : ''`}
+              <button
+                className="btn btn-warning"
                 onClick={() => setSaveTab(true)}
                 style={{ color: 'black' }}
               >
                 Bài viết đã lưu
-              </span>
+              </button>
             </div>
           )}
 

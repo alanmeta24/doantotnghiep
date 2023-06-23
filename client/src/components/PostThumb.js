@@ -3,6 +3,7 @@ import Avatar from './Avatar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import 'moment/locale/vi';
 const PostThumb = ({ posts, result }) => {
   const { theme } = useSelector((state) => state);
 

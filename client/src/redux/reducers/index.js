@@ -5,7 +5,9 @@ import theme from './themeReducer';
 import profile from './profileReducer';
 import status from './statusReducer';
 import status_class from './status_classReducer';
+import status_postclass from './status_postclassReducer';
 import homePosts from './postReducer';
+import postClassrooms from './postclassReducer';
 import modal from './modalReducer';
 import detailPost from './detailPostReducer';
 import discover from './discoverReducer';
@@ -26,7 +28,9 @@ export default combineReducers({
   profile,
   status,
   status_class,
+  status_postclass,
   homePosts,
+  postClassrooms,
   homeClassrooms,
   detailPost,
   detailClassroom,
