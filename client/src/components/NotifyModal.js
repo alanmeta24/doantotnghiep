@@ -55,9 +55,7 @@ const NotifyModal = () => {
       </div>
       <hr className="mt-0" />
 
-      {notify.data.length === 0 && (
-        <img src={NoNotice} alt="NoNotice" className="w-100" />
-      )}
+      {notify.data.length === 0 && <span> Chưa có thông báo mới</span>}
 
       <div style={{ maxHeight: 'calc(100vh - 200px)', overflow: 'auto' }}>
         {notify.data.map((msg, index) => (
