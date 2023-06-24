@@ -20,6 +20,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { refreshToken } from './redux/actions/authAction';
 import { getPosts } from './redux/actions/postAction';
 import { getClassrooms } from './redux/actions/classroomAction';
+import { getPostclassrooms } from './redux/actions/postclassAction';
 import { getSuggestions } from './redux/actions/suggestionsAction';
 
 import io from 'socket.io-client';
@@ -32,6 +33,7 @@ import Peer from 'peerjs';
 import ClassModal from './components/Classroom/ClassModal';
 import OpenHeaderDetail from './components/Exercise/OpenHeaderDetail';
 import PostclassModal from './components/PostclassModal';
+import HeaderDetail from './components/Classroom/HeaderDetail';
 
 function App() {
   const { auth, status, status_class, status_postclass, modal, call } =
@@ -52,6 +54,7 @@ function App() {
     if (auth.token) {
       dispatch(getPosts(auth.token));
       dispatch(getClassrooms(auth.token));
+      dispatch(getPostclassrooms(auth.token));
       dispatch(getSuggestions(auth.token));
       dispatch(getNotifies(auth.token));
     }
@@ -78,6 +81,12 @@ function App() {
     dispatch({ type: GLOBALTYPES.PEER, payload: newPeer });
   }, [dispatch]);
 
+  // const RenderHeader = (isHeader) => {
+  //   if (isHeader) {
+  //     return <HeaderDetail />;
+  //   }
+  // };
+
   return (
     <Router>
       <Alert />
@@ -88,6 +97,7 @@ function App() {
           ) : (
             <OpenHeaderDetail />
           )} */}
+
           {auth.token && <Header />}
           {status && <StatusModal />}
           {status_class && <ClassModal />}

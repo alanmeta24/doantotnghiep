@@ -56,7 +56,7 @@ export const createPost =
     }
   };
 
-export const getPosts = (token) => async (dispatch) => {
+export const getPostclassrooms = (token) => async (dispatch) => {
   try {
     dispatch({ type: POSTCLASS_TYPES.LOADING_POSTCLASS, payload: true });
     const res = await getDataAPI('postclassrooms', token);
