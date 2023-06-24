@@ -1,4 +1,4 @@
-const Postclassroom = require('../models/postclassModel');
+const Postclassrooms = require('../models/postclassModel');
 const Classrooms = require('../models/classroomModel');
 
 class APIfeatures {
@@ -19,13 +19,12 @@ class APIfeatures {
 const postclassCtrl = {
   createPost: async (req, res) => {
     try {
-      const { title, content, images } = req.body;
+      const { content, images } = req.body;
 
       if (images.length === 0)
         return res.status(400).json({ msg: 'Vui lòng thêm ảnh của bạn.' });
 
-      const newPostclass = new Posts({
-        title,
+      const newPostclass = new Postclassrooms({
         content,
         images,
         user: req.user._id,
@@ -46,13 +45,13 @@ const postclassCtrl = {
   getPosts: async (req, res) => {
     try {
       const features = new APIfeatures(
-        Posts.find({
+        Postclassrooms.find({
           user: [...req.user.following, req.user._id],
         }),
         req.query,
       ).paginating();
 
-      const posts = await features.query
+      const postclassrooms = await features.query
         .sort('-createdAt')
         .populate('user likes', 'avatar username fullname followers')
         .populate({
@@ -65,8 +64,8 @@ const postclassCtrl = {
 
       res.json({
         msg: 'Thành công!',
-        result: posts.length,
-        posts,
+        result: postclassrooms.length,
+        postclassrooms,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -74,12 +73,11 @@ const postclassCtrl = {
   },
   updatePost: async (req, res) => {
     try {
-      const { title, content, images } = req.body;
+      const { content, images } = req.body;
 
-      const post = await Posts.findOneAndUpdate(
+      const postclassroom = await Postclassrooms.findOneAndUpdate(
         { _id: req.params.id },
         {
-          title,
           content,
           images,
         },
@@ -96,8 +94,8 @@ const postclassCtrl = {
       res.json({
         msg: 'Cập nhật thành công!',
         newPostclass: {
-          ...post._doc,
-          title,
+          ...postclassroom._doc,
+
           content,
           images,
         },
@@ -115,7 +113,7 @@ const postclassCtrl = {
       if (post.length > 0)
         return res.status(400).json({ msg: 'Bạn đã thích bài đăng này.' });
 
-      const like = await Posts.findOneAndUpdate(
+      const like = await Postclassrooms.findOneAndUpdate(
         { _id: req.params.id },
         {
           $push: { likes: req.user._id },
@@ -152,13 +150,13 @@ const postclassCtrl = {
   getUserPosts: async (req, res) => {
     try {
       const features = new APIfeatures(
-        Posts.find({ user: req.params.id }),
+        Postclassrooms.find({ user: req.params.id }),
         req.query,
       ).paginating();
-      const posts = await features.query.sort('-createdAt');
+      const postclassrooms = await features.query.sort('-createdAt');
 
       res.json({
-        posts,
+        postclassrooms,
         result: posts.length,
       });
     } catch (err) {
@@ -167,7 +165,7 @@ const postclassCtrl = {
   },
   getPost: async (req, res) => {
     try {
-      const post = await Posts.findById(req.params.id)
+      const postclassroom = await Postclassrooms.findById(req.params.id)
         .populate('user likes', 'avatar username fullname followers')
         .populate({
           path: 'comments',
@@ -177,11 +175,11 @@ const postclassCtrl = {
           },
         });
 
-      if (!post)
+      if (!postclassroom)
         return res.status(400).json({ msg: 'Bài đăng không tồn tại.' });
 
       res.json({
-        post,
+        postclassroom,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -193,15 +191,15 @@ const postclassCtrl = {
 
       const num = req.query.num || 9;
 
-      const posts = await Posts.aggregate([
+      const postclassrooms = await Postclassrooms.aggregate([
         { $match: { user: { $nin: newArr } } },
         { $sample: { size: Number(num) } },
       ]);
 
       return res.json({
         msg: 'Thành công!',
-        result: posts.length,
-        posts,
+        result: postclassrooms.length,
+        postclassrooms,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -209,16 +207,16 @@ const postclassCtrl = {
   },
   deletePost: async (req, res) => {
     try {
-      const post = await Posts.findOneAndDelete({
+      const postclassroom = await Postclassrooms.findOneAndDelete({
         _id: req.params.id,
         user: req.user._id,
       });
-      await Comments.deleteMany({ _id: { $in: post.comments } });
+      await Comments.deleteMany({ _id: { $in: postclassroom.comments } });
 
       res.json({
         msg: 'Đã xoá bài đăng!',
         newPostclass: {
-          ...post,
+          ...postclassroom,
           user: req.user,
         },
       });
@@ -272,7 +270,7 @@ const postclassCtrl = {
   getSavePosts: async (req, res) => {
     try {
       const features = new APIfeatures(
-        Posts.find({
+        Postclassrooms.find({
           _id: { $in: req.user.saved },
         }),
         req.query,

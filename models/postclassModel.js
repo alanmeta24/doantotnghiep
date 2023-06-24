@@ -17,4 +17,4 @@ const postclassSchema = new mongoose.Schema(
   },
 );
 
-module.exports = mongoose.model('tweet', postclassSchema);
+module.exports = mongoose.model('postclass', postclassSchema);

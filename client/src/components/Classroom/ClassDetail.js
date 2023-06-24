@@ -54,7 +54,6 @@ const ClassDetail = ({ classroom }) => {
               <div className="main__status">
                 <p>Mã lớp</p>
                 <p>{classroom._id}</p>
-                <span className="material-icons">content_copy</span>
               </div>
             </div>
             {/* <div className="main__announcementsWrapper">
