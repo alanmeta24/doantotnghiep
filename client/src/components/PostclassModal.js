@@ -146,7 +146,10 @@ const PostclassModal = () => {
                 {' '}
                 <Button
                   onClick={() =>
-                    dispatch({ type: GLOBALTYPES.STATUS_POST, payload: false })
+                    dispatch({
+                      type: GLOBALTYPES.STATUS_POSTCLASS,
+                      payload: false,
+                    })
                   }
                 >
                   Hủy
