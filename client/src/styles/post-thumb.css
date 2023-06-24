@@ -85,3 +85,17 @@
   font-size: 14px;
   line-height: 16.1px;
 }
+
+.header_forum {
+  text-decoration: none;
+  width: 174px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header_forum .text {
+  color: #65676b;
+}
+.header_forum .number {
+  margin: 2px;
+}

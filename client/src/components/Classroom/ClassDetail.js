@@ -92,7 +92,7 @@ const ClassDetail = ({ classroom }) => {
                   />
                 ) : postClassrooms.result === 0 &&
                   postClassrooms.postclassrooms.length === 0 ? (
-                  <h2 className="text-center">Không Có Bài Đăng</h2>
+                  <h2 className="text-center">Không có bài đăng</h2>
                 ) : (
                   <PostClassrooms />
                 )}

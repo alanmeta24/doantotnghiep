@@ -153,7 +153,7 @@
 }
 
 .main__footer-btn {
-  text-align: end;
+  margin-left: 22%;
 }
 
 @media only screen and (max-width: 842px) {

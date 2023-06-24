@@ -122,7 +122,7 @@ const ClassModal = () => {
 
         <div className="status_footer">
           <button
-            className="btn btn-secondary w-50"
+            className="btn btn-secondary w-100"
             type="submit"
             style={{ padding: '10px' }}
           >

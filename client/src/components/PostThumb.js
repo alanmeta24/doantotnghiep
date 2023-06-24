@@ -19,10 +19,19 @@ const PostThumb = ({ posts, result }) => {
               <span className="hide_content title"> {post.title}</span>
 
               <span className="hide_content content"> {post.content}</span>
-
-              <small className="text-muted moment">
-                {moment(post.createdAt).fromNow()}
-              </small>
+              <div className="header_forum">
+                <i className="far fa-heart text">
+                  {' '}
+                  <span className="number">{post.likes.length}</span>
+                </i>
+                <i className="far fa-comment text">
+                  {' '}
+                  <span className="number">{post.comments.length}</span>
+                </i>
+                <small className="text-muted moment">
+                  {moment(post.createdAt).fromNow()}
+                </small>
+              </div>
             </div>
           </div>
         </Link>

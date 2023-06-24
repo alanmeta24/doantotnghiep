@@ -115,7 +115,7 @@ const EditProfile = ({ setOnEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="address">Địa Chỉ</label>
+          <label htmlFor="address">Mạng xã hội</label>
           <input
             type="text"
             name="address"
