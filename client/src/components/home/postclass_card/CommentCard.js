@@ -90,8 +90,8 @@ const CommentCard = ({ children, comment, post, commentId }) => {
             marginLeft: '5px',
           }}
         >
-          <small className="text-muted mr-3">
-            {moment(comment.createdAt).format('HH:mm')}
+          <small className="text-muted">
+            {moment(post.createdAt).fromNow()}
           </small>
         </small>
       </Link>

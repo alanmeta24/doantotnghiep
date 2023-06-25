@@ -5,7 +5,7 @@ const CardBody = ({ post, theme }) => {
   const [readMore, setReadMore] = useState(false);
 
   return (
-    <div className="card_body">
+    <div className="card_body" style={{ borderBottom: '1.7px solid #f5f5f5' }}>
       <div
         className="card_body-content"
         style={{

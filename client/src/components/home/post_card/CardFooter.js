@@ -104,7 +104,10 @@ const CardFooter = ({ post }) => {
         )}
       </div>
 
-      <div className="d-flex justify-content-between">
+      <div
+        className="d-flex justify-content-between"
+        style={{ borderBottom: '1.7px solid #f5f5f5' }}
+      >
         <h6 style={{ padding: '0 25px', cursor: 'pointer' }}>
           {post.likes.length} Thích
         </h6>

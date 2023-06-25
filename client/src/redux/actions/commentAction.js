@@ -38,7 +38,7 @@ export const createComment =
         recipients: newComment.reply ? [newComment.tag._id] : [post.user._id],
         url: `/post/${post._id}`,
         content: post.content,
-        image: post.images[0].url,
+        // image: post.images[0].url,
       };
 
       dispatch(createNotify({ msg, auth, socket }));

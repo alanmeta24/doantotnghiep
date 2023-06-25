@@ -45,7 +45,7 @@ export const createPost =
         url: `/post/${res.data.newPost._id}`,
         title,
         content,
-        image: media[0].url,
+        // image: media[0].url,
       };
 
       dispatch(createNotify({ msg, auth, socket }));

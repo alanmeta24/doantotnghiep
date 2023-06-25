@@ -40,7 +40,7 @@ const CardFooter = ({ post }) => {
 
   return (
     <div className="card_footer">
-      <div className="d-flex justify-content-between ">
+      <div className="d-flex icon_like ">
         <span class="material-icons-outlined">people_alt</span>
         <h6 className="card_show_comments">
           {post.comments.length} nhận xét về lớp học

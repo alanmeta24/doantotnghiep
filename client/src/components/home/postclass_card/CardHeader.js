@@ -43,7 +43,7 @@ const CardHeader = ({ post }) => {
             </Link>
           </h6>
           <small className="text-muted">
-            {moment(post.createdAt).format('HH:mm')}
+            {moment(post.createdAt).fromNow()}
           </small>
         </div>
       </div>

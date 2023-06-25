@@ -49,8 +49,8 @@
 /* ---------- Post Card Body ---------- */
 .posts .card_body-content {
   padding: 0 25px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin-top: -3px;
+  margin-bottom: 15px;
 }
 .posts .card_body-content .readMore {
   color: #000;
@@ -63,11 +63,11 @@
 .posts .card_icon_menu {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 25px;
   cursor: pointer;
 }
 .posts .card_icon_menu i {
-  font-size: 28px;
+  font-size: 25px;
   margin: 10px;
 }
 .posts .card_icon_menu img {
@@ -115,9 +115,9 @@
   position: relative;
   height: inherit;
 }
-.justify-content-between {
+/* .justify-content-between {
   align-items: center;
-}
+} */
 
 .post_bottom_action_item-text {
   font-weight: 600;
@@ -246,4 +246,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.icon_like {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-left: 3%;
 }

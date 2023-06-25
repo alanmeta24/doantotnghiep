@@ -44,7 +44,8 @@ export const createPost =
         recipients: res.data.newPostclass.user.followers,
         url: `/postclassroom/${res.data.newPostclass._id}`,
         content,
-        image: media[0].url,
+
+        // image: media[0].url,
       };
 
       dispatch(createNotify({ msg, auth, socket }));

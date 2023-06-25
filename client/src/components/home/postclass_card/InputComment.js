@@ -34,7 +34,7 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
     <form
       className="card-footer comment_input"
       onSubmit={handleSubmit}
-      style={{ border: 'none', borderRadius: '10px' }}
+      style={{ border: 'none', background: '#ffffff', width: '100%' }}
     >
       {children}
       {!setOnReply && <UserImg user={auth.user} />}
@@ -45,15 +45,16 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         style={{
-          border: '1px solid #000',
+          border: '1px solid rgb(201 199 199)',
           borderRadius: '50px',
           padding: '6px 10px',
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'white',
+          margin: '0 10px',
         }}
       />
 
       {/* <Icons setContent={setContent} content={content} /> */}
-      <button type="submit" className="postBtn">
+      <button type="submit" className="btn">
         Đăng
       </button>
     </form>
