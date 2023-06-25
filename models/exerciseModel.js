@@ -13,6 +13,10 @@ const exerciseSchema = new mongoose.Schema(
     user: { type: mongoose.Types.ObjectId, ref: 'user' },
     classroomId: mongoose.Types.ObjectId,
     classroomUserId: mongoose.Types.ObjectId,
+    expireDate: {
+      type: Date,
+      require: [true, 'Vui lòng nhập ngày hết hạn mã!'],
+    },
   },
   {
     timestamps: true,

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { DatePicker } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Button, Dialog, Slide, TextField } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
@@ -105,6 +106,18 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
                 >
                   Dành cho môn
                 </div>
+                <label className="mt-3" htmlFor="">
+                  Hạn mã giảm:{' '}
+                </label>
+                <DatePicker
+                  className="d-block"
+                  // onChange={onChange}
+                  // disabledDate={disabledDate}
+                  // value={dateTime}
+                  showTime={{ format: 'HH:mm' }}
+                  format="MM/DD/YYYY HH:mm"
+                />
+
                 <div className="joinClass__loginInfo">
                   <TextField
                     id="outlined-basic"

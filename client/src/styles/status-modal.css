@@ -9,7 +9,7 @@
   overflow: auto;
 }
 .status_modal form {
-  max-width: 550px;
+  max-width: 630px;
   width: 100%;
   background: white;
   margin: 167px auto;
@@ -130,6 +130,6 @@
 }
 
 .MuiFilledInput-multiline {
-  width: 508px !important;
+  width: 590px !important;
   padding: 27px 12px 10px;
 }
