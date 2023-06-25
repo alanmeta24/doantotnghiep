@@ -88,23 +88,14 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <Button
-                className="btn"
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-                style={{ width: '200px !important' }}
-              >
-                Giao bài
-              </Button>
-            </div>
-            <div className="exercise-request">
+              <div className="exercise_"></div>
+
               <div className="exercise-point">
                 <div
                   style={{ fontSize: '1.25rem', color: '#3c4043' }}
                   className="exercise-text"
                 >
-                  Dành cho môn
+                  Hạn nộp bài tập
                 </div>
                 <label className="mt-3" htmlFor="">
                   Hạn mã giảm:{' '}
@@ -134,75 +125,15 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
                   /> */}
                 </div>
               </div>
-              <div className="exercise-point">
-                <div
-                  style={{ fontSize: '1.25rem', color: '#3c4043' }}
-                  className="exercise-text"
-                >
-                  Số lượng học viên
-                </div>
-                <div className="joinClass__loginInfo">
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    value={point}
-                    onChange={(e) => setPoint(e.target.value)}
-                  />
-                  {/* <TextField
-                    id="outlined-basic"
-                    label="Owner's email"
-                    variant="outlined"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                  /> */}
-                </div>
-              </div>
-              <div className="exercise-point">
-                <div
-                  style={{ fontSize: '1.25rem', color: '#3c4043' }}
-                  className="exercise-text"
-                >
-                  Điểm
-                </div>
-                <div className="joinClass__loginInfo">
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    value={point}
-                    onChange={(e) => setPoint(e.target.value)}
-                  />
-                  {/* <TextField
-                    id="outlined-basic"
-                    label="Owner's email"
-                    variant="outlined"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                  /> */}
-                </div>
-              </div>
-              <div className="exercise-point">
-                <div
-                  style={{ fontSize: '1.25rem', color: '#3c4043' }}
-                  className="exercise-text"
-                >
-                  Hạn nộp
-                </div>
-                <div className="joinClass__loginInfo">
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    value={point}
-                    onChange={(e) => setPoint(e.target.value)}
-                  />
-                  {/* <TextField
-                    id="outlined-basic"
-                    label="Owner's email"
-                    variant="outlined"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                  /> */}
-                </div>
-              </div>
+              <Button
+                className="btn"
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+                style={{ width: '200px !important' }}
+              >
+                Giao bài
+              </Button>
             </div>
           </div>
         </div>

@@ -139,7 +139,7 @@ const StatusModal = () => {
           </div>
 
           <div className="status_footer">
-            <div className="input_images w-50">
+            <div className="input_images w-100">
               <div className="file_upload ">
                 <button className="btn btn-warning w-100" type="submit">
                   <input
@@ -154,7 +154,7 @@ const StatusModal = () => {
                 </button>
               </div>
             </div>
-            <div className="status_footer w-50">
+            <div className="status_footer w-100">
               <button className="btn btn-warning w-100" type="submit">
                 Đăng bài
               </button>
