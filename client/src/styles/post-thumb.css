@@ -60,7 +60,7 @@
 }
 
 .hide_content {
-  max-width: 450px;
+  max-width: 445px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

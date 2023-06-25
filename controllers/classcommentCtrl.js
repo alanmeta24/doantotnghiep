@@ -1,14 +1,16 @@
-const Comments = require('../models/commentModel');
-const Posts = require('../models/postModel');
+const Comments = require('../models/classcommentModel');
+const Postclassrooms = require('../models/postclassModel');
 
-const commentCtrl = {
+const classcommentCtrl = {
   createComment: async (req, res) => {
     try {
-      const { postId, content, tag, reply, postUserId } = req.body;
+      const { postclassId, content, tag, reply, postclassUserId } = req.body;
 
-      const post = await Posts.findById(postId);
+      const post = await Postclassrooms.findById(postclassId);
       if (!post)
-        return res.status(400).json({ msg: 'Bài đăng không tồn tại đó.' });
+        return res
+          .status(400)
+          .json({ msg: 'Bài đăng không tồn tại classroom.' });
 
       if (reply) {
         const cm = await Comments.findById(reply);
@@ -21,12 +23,12 @@ const commentCtrl = {
         content,
         tag,
         reply,
-        postUserId,
-        postId,
+        postclassUserId,
+        postclassId,
       });
 
-      await Posts.findOneAndUpdate(
-        { _id: postId },
+      await Postclassrooms.findOneAndUpdate(
+        { _id: postclassId },
         {
           $push: { comments: newComment._id },
         },
@@ -98,11 +100,11 @@ const commentCtrl = {
     try {
       const comment = await Comments.findOneAndDelete({
         _id: req.params.id,
-        $or: [{ user: req.user._id }, { postUserId: req.user._id }],
+        $or: [{ user: req.user._id }, { postclassUserId: req.user._id }],
       });
 
-      await Posts.findOneAndUpdate(
-        { _id: comment.postId },
+      await Postclassrooms.findOneAndUpdate(
+        { _id: comment.postclassId },
         {
           $pull: { comments: req.params.id },
         },
@@ -115,4 +117,4 @@ const commentCtrl = {
   },
 };
 
-module.exports = commentCtrl;
+module.exports = classcommentCtrl;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createComment } from '../../../redux/actions/commentAction';
+import { createComment } from '../../../redux/actions/classcommentAction';
 import UserImg from './UserInput';
 
 const InputComment = ({ children, post, onReply, setOnReply }) => {

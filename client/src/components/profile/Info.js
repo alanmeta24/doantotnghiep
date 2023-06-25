@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import Avatar from '../Avatar';
 import EditProfile from './EditProfile';
-import Followers from './Followers';
-import Following from './Following';
 import { useDispatch, useSelector } from 'react-redux';
 import ImgBuilding from '../../assets/images/building.jpg';
 import FollowBtn from '../FollowBtn';
@@ -64,7 +62,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
           </div>
 
           <div className="info_status">
-            <span>Yêu màu hồng và ghét sự giả dối </span>
+            <span>{user.story} </span>
             <span>
               Họ và tên: <span className="data_info">{user.fullname}</span>
               {auth.user.role !== 'user' ? (
@@ -74,13 +72,13 @@ const Info = ({ id, auth, profile, dispatch }) => {
               )}
             </span>
             <span>
-              username: <span className="data_info">{user.username}</span>@
+              username: <span className="data_info">@{user.username}</span>
             </span>
             <span>
               Email: <span className="data_info"> {user.email}</span>
             </span>
             <span>
-              Số điện thoại: <span className="data_info"> {user.phone}</span>
+              Số điện thoại: <span className="data_info"> {user.mobile}</span>
             </span>
           </div>
           {onEdit && <EditProfile setOnEdit={setOnEdit} />}

@@ -39,7 +39,11 @@ const Saved = ({ auth, dispatch }) => {
   };
 
   return (
-    <div>
+    <div style={{ width: '943px', marginLeft: '19%' }}>
+      <span style={{ marginLeft: '43%', fontSize: '18px', fontWeight: '500' }}>
+        {' '}
+        Bài viết đã lưu
+      </span>
       <PostThumb posts={savePosts} result={result} />
 
       {load && (

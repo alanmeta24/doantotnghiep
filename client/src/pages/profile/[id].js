@@ -29,18 +29,6 @@ const Profile = () => {
         <div className="profile">
           <Info auth={auth} profile={profile} dispatch={dispatch} id={id} />
 
-          {auth.user._id === id && (
-            <div className="profile_tab">
-              <button
-                className="btn btn-warning"
-                onClick={() => setSaveTab(true)}
-                style={{ color: 'black' }}
-              >
-                Bài viết đã lưu
-              </button>
-            </div>
-          )}
-
           {profile.loading ? (
             <img
               src={LoadIcon}
@@ -48,7 +36,7 @@ const Profile = () => {
               className="d-block mx-auto my-4"
             />
           ) : (
-            <>{saveTab && <Saved auth={auth} dispatch={dispatch} />}</>
+            <Saved auth={auth} dispatch={dispatch} />
           )}
         </div>
       </div>

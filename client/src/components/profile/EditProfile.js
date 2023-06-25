@@ -9,11 +9,10 @@ const EditProfile = ({ setOnEdit }) => {
   const initState = {
     fullname: '',
     mobile: '',
-    address: '',
-    gender: '',
+    story: '',
   };
   const [userData, setUserData] = useState(initState);
-  const { fullname, mobile, address, gender } = userData;
+  const { fullname, mobile, story } = userData;
 
   const [avatar, setAvatar] = useState('');
 
@@ -115,35 +114,17 @@ const EditProfile = ({ setOnEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="address">Mạng xã hội</label>
+          <label htmlFor="story">Tiểu sử</label>
           <input
             type="text"
-            name="address"
-            value={address}
+            name="story"
+            value={story}
             className="form-control"
             onChange={handleInput}
             style={{
               borderRadius: '10px',
             }}
           />
-        </div>
-
-        <label htmlFor="gender">Giới Tính</label>
-        <div className="input-group-prepend px-0 mb-4">
-          <select
-            name="gender"
-            id="gender"
-            value={gender}
-            className="custom-select text-capitalize"
-            onChange={handleInput}
-            style={{
-              borderRadius: '10px',
-            }}
-          >
-            <option value="male">Nam</option>
-            <option value="female">Nữ</option>
-            <option value="other">Khác</option>
-          </select>
         </div>
 
         <button

@@ -8,7 +8,7 @@ import {
   likeComment,
   unLikeComment,
   updateComment,
-} from '../../../redux/actions/commentAction';
+} from '../../../redux/actions/classcommentAction';
 import InputComment from './InputComment';
 import CommentMenu from './CommentMenu';
 
