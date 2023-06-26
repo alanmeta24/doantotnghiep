@@ -72,7 +72,7 @@ const EditProfile = ({ setOnEdit }) => {
           </span>
         </div>
         <div className="form-group">
-          <label htmlFor="story">Tiểu sử</label>
+          <label htmlFor="story">Câu châm ngôn</label>
           <input
             type="text"
             name="story"
@@ -86,7 +86,7 @@ const EditProfile = ({ setOnEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="fullname">Tên Đầy Đủ</label>
+          <label htmlFor="fullname">Tên đầy đủ</label>
           <div className="position-relative">
             <input
               type="text"
@@ -113,7 +113,7 @@ const EditProfile = ({ setOnEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="mobile">Số Điện Thoại</label>
+          <label htmlFor="mobile">Số điện thoại</label>
           <input
             type="text"
             name="mobile"
