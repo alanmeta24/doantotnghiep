@@ -13,6 +13,7 @@ const CardBody = ({ post, theme }) => {
           color: theme ? 'white' : '#111',
         }}
       >
+        <p className="hide_content title"> {post.title}</p>
         <span>
           {post.content.length < 60
             ? post.content
