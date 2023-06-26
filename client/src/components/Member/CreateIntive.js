@@ -16,24 +16,6 @@ const CreateIntive = ({ openIntive, setOpenIntive }) => {
         <p className="class__title">Mời giáo viên</p>
 
         <Search />
-        <div className="form__dialog">
-          <Button
-            onClick={() => setOpenIntive(false)}
-            color="primary"
-            style={{ marginRight: '5px' }}
-          >
-            Hủy
-          </Button>
-
-          <Button
-            // onClick={handleSubmit}
-            color="primary"
-            variant="contained"
-            style={{ marginLeft: '5px' }}
-          >
-            Mời
-          </Button>
-        </div>
       </div>
     </Dialog>
   );

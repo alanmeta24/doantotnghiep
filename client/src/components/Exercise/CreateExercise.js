@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DatePicker } from 'antd';
+import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Button, Dialog, Slide, TextField } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
@@ -9,6 +10,8 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
 
   const [title, setTitle] = useState('');
   const [guide, setGuide] = useState('');
+  const [dateTime, setDateTime] = useState();
+  const [expireDate, setExpireDate] = useState();
   const [file, setFile] = useState([]);
   const [expires, setExpires] = useState('Không có ngày đến hạn');
   const [point, setPoint] = useState(100);
@@ -22,13 +25,16 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
     // } else {
     //   dispatch(createClassroom({ title, guide, file, expires, point,auth, socket }));
     // }
-
     setTitle('');
     setGuide('');
     setFile('');
-    setExpires('');
-    setPoint('');
+    setDateTime('');
+
     // setOpenCreateClass(false);
+  };
+  const onChange = (value, dateString) => {
+    setDateTime(value);
+    setExpireDate(dateString);
   };
 
   useEffect(() => {
@@ -36,10 +42,11 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
       setTitle(status.title);
       setGuide(status.guide);
       setFile(status.file);
-      setExpires(status.expires);
-      setPoint(status.point);
     }
   }, [status]);
+  const disabledDate = (current) => {
+    return current && current < moment().endOf('day');
+  };
 
   return (
     <div className="home_page">
@@ -88,52 +95,40 @@ const CreateExercise = ({ createExercise, setCreateExercise }) => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div className="exercise_"></div>
-
-              <div className="exercise-point">
-                <div
-                  style={{ fontSize: '1.25rem', color: '#3c4043' }}
-                  className="exercise-text"
-                >
-                  Hạn nộp bài tập
-                </div>
-                <label className="mt-3" htmlFor="">
-                  Hạn mã giảm:{' '}
-                </label>
-                <DatePicker
-                  className="d-block"
-                  // onChange={onChange}
-                  // disabledDate={disabledDate}
-                  // value={dateTime}
-                  showTime={{ format: 'HH:mm' }}
-                  format="MM/DD/YYYY HH:mm"
-                />
-
-                <div className="joinClass__loginInfo">
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    value={point}
-                    onChange={(e) => setPoint(e.target.value)}
-                  />
-                  {/* <TextField
-                    id="outlined-basic"
-                    label="Owner's email"
-                    variant="outlined"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                  /> */}
-                </div>
-              </div>
-              <Button
-                className="btn"
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-                style={{ width: '200px !important' }}
+              <div
+                style={{
+                  fontSize: '1.25rem',
+                  color: '#3c4043',
+                  marginTop: '10px',
+                }}
+                className="exercise-text"
               >
-                Giao bài
-              </Button>
+                Hạn nộp bài tập
+              </div>
+              <div className="exercise_modal">
+                <div className="exercise-point">
+                  <label className="mt-3" htmlFor="">
+                    Hạn mã giảm:{' '}
+                  </label>
+                  <DatePicker
+                    className="d-block"
+                    onChange={onChange}
+                    disabledDate={disabledDate}
+                    value={dateTime}
+                    showTime={{ format: 'HH:mm' }}
+                    format="MM/DD/YYYY HH:mm"
+                  />
+                </div>
+                <Button
+                  className="btn"
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSubmit}
+                  style={{ width: '200px !important' }}
+                >
+                  Giao bài
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -71,6 +71,19 @@ const EditProfile = ({ setOnEdit }) => {
             />
           </span>
         </div>
+        <div className="form-group">
+          <label htmlFor="story">Tiểu sử</label>
+          <input
+            type="text"
+            name="story"
+            value={story}
+            className="form-control"
+            onChange={handleInput}
+            style={{
+              borderRadius: '10px',
+            }}
+          />
+        </div>
 
         <div className="form-group">
           <label htmlFor="fullname">Tên Đầy Đủ</label>
@@ -105,20 +118,6 @@ const EditProfile = ({ setOnEdit }) => {
             type="text"
             name="mobile"
             value={mobile}
-            className="form-control"
-            onChange={handleInput}
-            style={{
-              borderRadius: '10px',
-            }}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="story">Tiểu sử</label>
-          <input
-            type="text"
-            name="story"
-            value={story}
             className="form-control"
             onChange={handleInput}
             style={{

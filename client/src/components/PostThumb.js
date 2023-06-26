@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import 'moment/locale/vi';
+import Carousel from './Carousel';
 const PostThumb = ({ posts, result }) => {
   const { theme } = useSelector((state) => state);
 
@@ -33,6 +34,11 @@ const PostThumb = ({ posts, result }) => {
                 </small>
               </div>
             </div>
+            {/* <div style={{ width: '72%' }}>
+              {post.images.length > 0 && (
+                <Carousel images={post.images} id={post._id} />
+              )}
+            </div> */}
           </div>
         </Link>
       ))}

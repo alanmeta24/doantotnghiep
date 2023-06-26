@@ -1,13 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Avatar from '../Avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
+import { deleteClassroom } from '../../redux/actions/classroomAction';
 const ClassCard = ({ classroom }) => {
-  // console.log({ classroom });
-  const { auth } = useSelector((state) => state);
-  const handleClickTitle = () => {
-    console.log('hello');
+  const { auth, socket } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const handleEditPost = () => {
+    dispatch({
+      type: GLOBALTYPES.STATUS_CLASS,
+      payload: { ...classroom, onEdit: true },
+    });
   };
+  const handleDeletePost = () => {
+    if (window.confirm('Bạn muốn xoá bài viết này?')) {
+      dispatch(deleteClassroom({ classroom, auth, socket }));
+      return history.push('/');
+    }
+  };
+  // Saved
+  useEffect(() => {}, [auth.user.saved, classroom._id]);
   return (
     <li className="joined__list">
       <div className="joined__wrapper">
@@ -35,17 +50,16 @@ const ClassCard = ({ classroom }) => {
                 className="dropdown-menu"
                 style={{ borderRadius: '12px', border: 'none' }}
               >
-                {/* {auth.user._id === post.user._id && (
-                    <>
-                      <div className="dropdown-item">Chỉnh sửa</div>
-                      <div className="dropdown-item">Xoá</div>
-                    </>
-                  )} */}
-
-                <>
-                  <div className="dropdown-item">Chỉnh sửa</div>
-                  <div className="dropdown-item">Sao chép</div>
-                </>
+                {auth.user._id === classroom.user._id && (
+                  <>
+                    <div className="dropdown-item" onClick={handleEditPost}>
+                      Chỉnh sửa
+                    </div>
+                    <div className="dropdown-item" onClick={handleDeletePost}>
+                      Xoá
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -56,9 +70,6 @@ const ClassCard = ({ classroom }) => {
         </div>
 
         <div className="text_title">
-          {/* <p className="joined__owner sub" style={{ color: 'black' }}>
-            Lớp học: {classroom.className}
-          </p> */}
           <p className="joined__owner sub" style={{ color: 'black' }}>
             Môn học: {classroom.subject}
           </p>
@@ -70,10 +81,6 @@ const ClassCard = ({ classroom }) => {
           </p>
         </div>
       </div>
-      {/* <div className="joined__bottom">
-        <PermContactCalendar />
-        <FolderOpen />
-      </div> */}
     </li>
   );
 };

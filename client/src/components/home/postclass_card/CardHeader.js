@@ -15,7 +15,7 @@ const CardHeader = ({ post }) => {
   const history = useHistory();
   const handleEditPost = () => {
     dispatch({
-      type: GLOBALTYPES.STATUS_POST,
+      type: GLOBALTYPES.STATUS_POSTCLASS,
       payload: { ...post, onEdit: true },
     });
   };
@@ -66,9 +66,6 @@ const CardHeader = ({ post }) => {
               </div>
             </>
           )}
-          <div className="dropdown-item" onClick={handleCopyLink}>
-            Sao chép đường liên kết
-          </div>
         </div>
       </div>
     </div>

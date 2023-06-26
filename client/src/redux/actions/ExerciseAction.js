@@ -137,7 +137,7 @@ export const likePost =
         url: `/post/${post._id}`,
         title: post.title,
         content: post.content,
-        image: post.images[0].url,
+        // image: post.images[0].url,
       };
 
       dispatch(createNotify({ msg, auth, socket }));

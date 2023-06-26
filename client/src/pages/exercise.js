@@ -7,7 +7,7 @@ const Exercise = () => {
   const [createExercise, setCreateExercise] = useState(false);
   return (
     <Helmet title="Bài tập">
-      <div className="content container-class">
+      <div className="content ">
         <button
           className="btn"
           style={{
