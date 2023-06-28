@@ -1,14 +1,13 @@
-import React from "react";
-import UserCard from "../UserCard";
-import FollowBtn from "../FollowBtn";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import FollowBtn from '../FollowBtn';
+import UserCard from '../UserCard';
 
 const Following = ({ users, setShowFollowing }) => {
   const { auth } = useSelector((state) => state);
   return (
     <div className="follow">
       <div className="follow_box">
-        <h5 className="text-center">Đang Theo Dõi</h5>
+        <h5 className="text-center">Đang theo dõi</h5>
         <hr />
 
         <div className="follow_content">
@@ -23,9 +22,12 @@ const Following = ({ users, setShowFollowing }) => {
           ))}
         </div>
 
-        <div className="close" onClick={() => setShowFollowing(false)}>
+        <button
+          className="btn btn_close"
+          onClick={() => setShowFollowing(false)}
+        >
           &times;
-        </div>
+        </button>
       </div>
     </div>
   );

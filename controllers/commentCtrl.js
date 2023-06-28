@@ -1,5 +1,5 @@
-const Comments = require("../models/commentModel");
-const Posts = require("../models/postModel");
+const Comments = require('../models/commentModel');
+const Posts = require('../models/postModel');
 
 const commentCtrl = {
   createComment: async (req, res) => {
@@ -8,12 +8,12 @@ const commentCtrl = {
 
       const post = await Posts.findById(postId);
       if (!post)
-        return res.status(400).json({ msg: "Bài đăng không tồn tại." });
+        return res.status(400).json({ msg: 'Bài đăng không tồn tại đó.' });
 
       if (reply) {
         const cm = await Comments.findById(reply);
         if (!cm)
-          return res.status(400).json({ msg: "Bình luận không tồn tại." });
+          return res.status(400).json({ msg: 'Bình luận không tồn tại.' });
       }
 
       const newComment = new Comments({
@@ -30,7 +30,7 @@ const commentCtrl = {
         {
           $push: { comments: newComment._id },
         },
-        { new: true }
+        { new: true },
       );
 
       await newComment.save();
@@ -49,10 +49,10 @@ const commentCtrl = {
           _id: req.params.id,
           user: req.user._id,
         },
-        { content }
+        { content },
       );
 
-      res.json({ msg: "Cập nhật thành công!" });
+      res.json({ msg: 'Cập nhật thành công!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -64,17 +64,17 @@ const commentCtrl = {
         likes: req.user._id,
       });
       if (comment.length > 0)
-        return res.status(400).json({ msg: "Bạn đã thích bài đăng này." });
+        return res.status(400).json({ msg: 'Bạn đã thích bài đăng này.' });
 
       await Comments.findOneAndUpdate(
         { _id: req.params.id },
         {
           $push: { likes: req.user._id },
         },
-        { new: true }
+        { new: true },
       );
 
-      res.json({ msg: "Đã thích bình luận!" });
+      res.json({ msg: 'Đã thích bình luận!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -86,10 +86,10 @@ const commentCtrl = {
         {
           $pull: { likes: req.user._id },
         },
-        { new: true }
+        { new: true },
       );
 
-      res.json({ msg: "Đã bỏ thích bình luận!" });
+      res.json({ msg: 'Đã bỏ thích bình luận!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -105,10 +105,10 @@ const commentCtrl = {
         { _id: comment.postId },
         {
           $pull: { comments: req.params.id },
-        }
+        },
       );
 
-      res.json({ msg: "Đẫ xoá bình luận!" });
+      res.json({ msg: 'Đẫ xoá bình luận!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

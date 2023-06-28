@@ -5,6 +5,7 @@
   --hrColor: #cfcdcd;
   --cardColor: rgba(255, 255, 255, 0.64);
   --buttonBg: linear-gradient(98.63deg, #f5c32c 0%, #fc771f 100%);
+  --buttonHover: linear-gradient(98.63deg, #fb9804 0%, #ff6600 100%);
   --inputColor: rgba(40, 52, 62, 0.07);
   --location: #ef5757;
   --shedule: #e1ae4a;
@@ -76,9 +77,9 @@ img {
 
 .btn:hover {
   cursor: pointer;
-  color: var(--orange);
-  background: transparent;
-  border: 2px solid var(--orange);
+  color: white;
+  background: var(--buttonHover);
+  /* border: 2px solid var(--orange); */
 }
 h1,
 h2,
@@ -101,9 +102,9 @@ label {
   font-size: 1.03vw;
   border: none;
   border-radius: 10px;
-  background: #ffffff;
+  background: #f0f2f5;
   transition: all 100ms ease-out;
-  width: 100%;
+  width: 32%;
   height: 80%;
 }
 .header-content {
@@ -159,6 +160,8 @@ label {
 
 @import url('./styles/home.css');
 
+@import url('./styles/icons.css');
+
 @import url('./styles/status-modal.css');
 
 @import url('./styles/comments.css');
@@ -175,9 +178,15 @@ label {
 
 @import url('./styles/meeting.css');
 
+@import url('./styles/call_modal.css');
+
 @import url('./styles/point.css');
 
 @import url('./styles/message.css');
+
+@import url('./styles/post-thumb.css');
+
+@import url('./styles/members.css');
 
 /* -------------- Product modal ------------ */
 .product_modal {
@@ -233,7 +242,6 @@ label {
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
-  max-width: 65px;
   width: 100%;
   height: auto;
 }

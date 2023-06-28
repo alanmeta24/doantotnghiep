@@ -1,0 +1,26 @@
+const mongoose = require('mongoose');
+
+const exerciseSchema = new mongoose.Schema(
+  {
+    title: String,
+    content: String,
+    images: {
+      type: Array,
+      required: true,
+    },
+    likes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
+    comments: [{ type: mongoose.Types.ObjectId, ref: 'comment' }],
+    user: { type: mongoose.Types.ObjectId, ref: 'user' },
+    classroomId: mongoose.Types.ObjectId,
+    classroomUserId: mongoose.Types.ObjectId,
+    expireDate: {
+      type: Date,
+      require: [true, 'Vui lòng nhập ngày hết hạn mã!'],
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+module.exports = mongoose.model('exercise', exerciseSchema);

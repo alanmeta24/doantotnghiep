@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UTC2 from '../../assets/images/uct2.png';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
-import Posts from '../home/Posts';
+import StatusModal from '../../components/StatusModal';
 import LoadIcon from '../../assets/images/loading.gif';
+import TweetInput from '../home/TweetInput';
+import Tweets from '../home/Tweets';
+import PostClassrooms from '../home/PostClassrooms';
+
 let scroll = 0;
 const ClassDetail = ({ classroom }) => {
-  const { homePosts } = useSelector((state) => state);
+  const { postClassrooms, status } = useSelector((state) => state);
 
   window.addEventListener('scroll', () => {
     if (window.location.pathname === '/') {
@@ -34,10 +38,7 @@ const ClassDetail = ({ classroom }) => {
               </div>
               <div className="main__text">
                 <h1 className="main__heading main__overflow">
-                  Tên lớp:{' '}
-                  <span style={{ textTransform: 'uppercase' }}>
-                    {classroom.className}
-                  </span>
+                  Tên lớp: <span>{classroom.className}</span>
                 </h1>
                 <div className="main__section main__overflow">
                   Môn học: {classroom.subject}
@@ -53,19 +54,28 @@ const ClassDetail = ({ classroom }) => {
               <div className="main__status">
                 <p>Mã lớp</p>
                 <p>{classroom._id}</p>
-                <span className="material-icons">content_copy</span>
-              </div>
-              <div className="main__status">
-                <p>Sắp đến hạn</p>
-                <p>Không có bài tập sắp hết hạn</p>
               </div>
             </div>
+            {/* <div className="main__announcementsWrapper">
+         
+              <div className="main__ancContent">
+                <TweetInput />
+              
+              </div>
+
+              <Tweets classroom={classroom} />
+
+            
+            </div> */}
             <div className="main__announcementsWrapper">
               <div className="main__ancContent">
                 <div
                   className="main__wrapper100"
                   onClick={() =>
-                    dispatch({ type: GLOBALTYPES.STATUS_POST, payload: true })
+                    dispatch({
+                      type: GLOBALTYPES.STATUS_POSTCLASS,
+                      payload: true,
+                    })
                   }
                 >
                   <Avatar src={auth.user.avatar} size="big-avatar" />
@@ -73,16 +83,17 @@ const ClassDetail = ({ classroom }) => {
                 </div>
               </div>
               <div className="main__announce ">
-                {homePosts.loading ? (
+                {postClassrooms.loading ? (
                   <img
                     src={LoadIcon}
                     alt="loading"
                     className="d-block mx-auto"
                   />
-                ) : homePosts.result === 0 && homePosts.posts.length === 0 ? (
-                  <h2 className="text-center">Không Có Bài Đăng</h2>
+                ) : postClassrooms.result === 0 &&
+                  postClassrooms.postclassrooms.length === 0 ? (
+                  <h2 className="text-center">Không có bài đăng</h2>
                 ) : (
-                  <Posts />
+                  <PostClassrooms />
                 )}
               </div>
             </div>

@@ -9,7 +9,7 @@ const { CLIENT_URL } = process.env;
 const authCtrl = {
   register: async (req, res) => {
     try {
-      const { fullname, username, email, password, gender } = req.body;
+      const { fullname, username, email, password, role } = req.body;
       let newUserName = username.toLowerCase().replace(/ /g, '');
 
       const user_name = await Users.findOne({ username: newUserName });
@@ -32,7 +32,7 @@ const authCtrl = {
         username: newUserName,
         email,
         password: passwordHash,
-        gender,
+        role,
       });
 
       const access_token = createAccessToken({ id: newUser._id });

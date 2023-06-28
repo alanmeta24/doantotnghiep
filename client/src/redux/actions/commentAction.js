@@ -1,11 +1,11 @@
-import { GLOBALTYPES, EditData, DeleteData } from "./globalTypes";
-import { POST_TYPES } from "./postAction";
+import { GLOBALTYPES, EditData, DeleteData } from './globalTypes';
+import { POST_TYPES } from './postAction';
 import {
   postDataAPI,
   patchDataAPI,
   deleteDataAPI,
-} from "../../utils/fetchData";
-import { createNotify, removeNotify } from "../actions/notifyAction";
+} from '../../utils/fetchData';
+import { createNotify, removeNotify } from '../actions/notifyAction';
 
 export const createComment =
   ({ post, newComment, auth, socket }) =>
@@ -20,25 +20,25 @@ export const createComment =
         postId: post._id,
         postUserId: post.user._id,
       };
-      const res = await postDataAPI("comment", data, auth.token);
+      const res = await postDataAPI('comment', data, auth.token);
 
       const newData = { ...res.data.newComment, user: auth.user };
       const newPost = { ...post, comments: [...post.comments, newData] };
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
 
       // Socket
-      socket.emit("createComment", newPost);
+      socket.emit('createComment', newPost);
 
       // Notify
       const msg = {
         id: res.data.newComment._id,
         text: newComment.reply
-          ? "Đã nhắc đến bạn trong bình luận."
-          : "Đã bình luận trong bài đăng của bạn.",
+          ? 'Đã nhắc đến bạn trong bình luận.'
+          : 'Đã bình luận trong bài đăng của bạn.',
         recipients: newComment.reply ? [newComment.tag._id] : [post.user._id],
         url: `/post/${post._id}`,
         content: post.content,
-        image: post.images[0].url,
+        // image: post.images[0].url,
       };
 
       dispatch(createNotify({ msg, auth, socket }));
@@ -126,13 +126,13 @@ export const deleteComment =
     const newPost = {
       ...post,
       comments: post.comments.filter(
-        (cm) => !deleteArr.find((da) => cm._id === da._id)
+        (cm) => !deleteArr.find((da) => cm._id === da._id),
       ),
     };
 
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
 
-    socket.emit("deleteComment", newPost);
+    socket.emit('deleteComment', newPost);
     try {
       deleteArr.forEach((item) => {
         deleteDataAPI(`comment/${item._id}`, auth.token);
@@ -140,8 +140,8 @@ export const deleteComment =
         const msg = {
           id: item._id,
           text: comment.reply
-            ? "Đã nhắc đến bạn trong bình luận."
-            : "Đã bình luận trong bài đăng của bạn.",
+            ? 'Đã nhắc đến bạn trong bình luận.'
+            : 'Đã bình luận trong bài đăng của bạn.',
           recipients: comment.reply ? [comment.tag._id] : [post.user._id],
           url: `/post/${post._id}`,
         };

@@ -16,10 +16,10 @@ const Register = () => {
     email: '',
     password: '',
     cf_password: '',
-    gender: 'male',
+    role: 'user',
   };
   const [userData, setUserData] = useState(initialState);
-  const { fullname, username, email, password, cf_password } = userData;
+  const { fullname, username, email, password, cf_password, role } = userData;
 
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
@@ -162,37 +162,26 @@ const Register = () => {
               </small>
             </div>
             <div className="row justify-content-between">
-              <span htmlFor="username">Giới tính:</span>
-              <label htmlFor="male">
-                Nam{' '}
+              <span htmlFor="username">Phân quyền:</span>
+              <label htmlFor="user">
+                Sinh viên
                 <input
                   type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
+                  id="user"
+                  name="role"
+                  value="user"
                   defaultChecked
                   onChange={handleChangeInput}
                   style={{ cursor: 'pointer' }}
                 />
               </label>
-              <label htmlFor="female">
-                Nữ{' '}
+              <label htmlFor="teacher">
+                Giảng viên{' '}
                 <input
                   type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  onChange={handleChangeInput}
-                  style={{ cursor: 'pointer' }}
-                />
-              </label>
-              <label htmlFor="other">
-                Khác{' '}
-                <input
-                  type="radio"
-                  id="other"
-                  name="gender"
-                  value="other"
+                  id="teacher"
+                  name="role"
+                  value="teacher"
                   onChange={handleChangeInput}
                   style={{ cursor: 'pointer' }}
                 />

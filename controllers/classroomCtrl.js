@@ -52,7 +52,7 @@ const classroomCtrl = {
         .sort('-createdAt')
         .populate('user likes', 'avatar username fullname followers')
         .populate({
-          path: 'comments',
+          path: 'posts',
           populate: {
             path: 'user likes',
             select: '-password',

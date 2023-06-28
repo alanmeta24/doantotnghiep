@@ -1,14 +1,14 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import NoNotice from "../images/notice.png";
-import { Link } from "react-router-dom";
-import Avatar from "./Avatar";
-import moment from "moment";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import NoNotice from '../images/notice.png';
+import { Link } from 'react-router-dom';
+import Avatar from './Avatar';
+import moment from 'moment';
 import {
   isReadNotify,
   NOTIFY_TYPES,
   deleteAllNotifies,
-} from "../redux/actions/notifyAction";
+} from '../redux/actions/notifyAction';
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector((state) => state);
@@ -28,7 +28,7 @@ const NotifyModal = () => {
 
     if (
       window.confirm(
-        `Bạn có ${newArr.length} thông báo chưa đọc. Bạn muốn xoá tất cả?`
+        `Bạn có ${newArr.length} thông báo chưa đọc. Bạn muốn xoá tất cả?`,
       )
     ) {
       return dispatch(deleteAllNotifies(auth.token));
@@ -36,30 +36,28 @@ const NotifyModal = () => {
   };
 
   return (
-    <div style={{ minWidth: "300px" }}>
+    <div style={{ minWidth: '300px' }}>
       <div className="d-flex justify-content-between align-items-center px-3">
         <h3>Thông Báo</h3>
         {notify.sound ? (
           <i
             className="fas fa-bell text-danger"
-            style={{ fontSize: "1.2rem", cursor: "pointer" }}
+            style={{ fontSize: '1.2rem', cursor: 'pointer' }}
             onClick={handleSound}
           />
         ) : (
           <i
             className="fas fa-bell-slash text-danger"
-            style={{ fontSize: "1.2rem", cursor: "pointer" }}
+            style={{ fontSize: '1.2rem', cursor: 'pointer' }}
             onClick={handleSound}
           />
         )}
       </div>
       <hr className="mt-0" />
 
-      {notify.data.length === 0 && (
-        <img src={NoNotice} alt="NoNotice" className="w-100" />
-      )}
+      {notify.data.length === 0 && <span> Chưa có thông báo mới</span>}
 
-      <div style={{ maxHeight: "calc(100vh - 200px)", overflow: "auto" }}>
+      <div style={{ maxHeight: 'calc(100vh - 200px)', overflow: 'auto' }}>
         {notify.data.map((msg, index) => (
           <div key={index} className="px-2 mb-3">
             <Link
@@ -78,7 +76,7 @@ const NotifyModal = () => {
               </div>
 
               {msg.image && (
-                <div style={{ width: "30px" }}>
+                <div style={{ width: '30px' }}>
                   {msg.image.match(/video/i) ? (
                     <video src={msg.image} width="100%" />
                   ) : (
@@ -89,7 +87,7 @@ const NotifyModal = () => {
             </Link>
             <small className="text-muted d-flex justify-content-between px-2">
               {moment(msg.createdAt).fromNow()}
-              {!msg.isRead && <i className="fas fa-circle text-primary" />}
+              {/* {!msg.isRead && <i className="fas fa-circle text-primary" />} */}
             </small>
           </div>
         ))}
@@ -98,7 +96,7 @@ const NotifyModal = () => {
       <hr className="my-1" />
       <div
         className="text-right text-danger mr-2"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: 'pointer' }}
         onClick={handleDeleteAll}
       >
         Xoá Tất Cả

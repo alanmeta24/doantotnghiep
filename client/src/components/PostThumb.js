@@ -1,37 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import React from 'react';
+import Avatar from './Avatar';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+import 'moment/locale/vi';
+import Carousel from './Carousel';
 const PostThumb = ({ posts, result }) => {
   const { theme } = useSelector((state) => state);
 
   if (result === 0)
-    return <h2 className="text-center text-danger">Không Có Bài Đăng</h2>;
+    return <h2 className="text-center text-danger">Không có bài viết</h2>;
 
   return (
     <div className="post_thumb">
       {posts.map((post) => (
         <Link key={post._id} to={`/post/${post._id}`}>
           <div className="post_thumb_display">
-            {post.images[0].url.match(/video/i) ? (
-              <video
-                controls
-                src={post.images[0].url}
-                alt={post.images[0].url}
-                style={{ filter: theme ? "invert(1)" : "invert(0)" }}
-              />
-            ) : (
-              <img
-                src={post.images[0].url}
-                alt={post.images[0].url}
-                style={{ filter: theme ? "invert(1)" : "invert(0)" }}
-              />
-            )}
+            <div className="post_thumb_show">
+              <span className="hide_content title"> {post.title}</span>
 
-            <div className="post_thumb_menu">
-              <i className="far fa-star">{post.likes.length}</i>
-              <i className="far fa-comments">{post.comments.length}</i>
+              <span className="hide_content content"> {post.content}</span>
+              <div className="header_forum">
+                <i className="far fa-heart text">
+                  {' '}
+                  <span className="number">{post.likes.length}</span>
+                </i>
+                <i className="far fa-comment text">
+                  {' '}
+                  <span className="number">{post.comments.length}</span>
+                </i>
+                <small className="text-muted moment">
+                  {moment(post.createdAt).fromNow()}
+                </small>
+              </div>
             </div>
+            {/* <div style={{ width: '72%' }}>
+              {post.images.length > 0 && (
+                <Carousel images={post.images} id={post._id} />
+              )}
+            </div> */}
           </div>
         </Link>
       ))}

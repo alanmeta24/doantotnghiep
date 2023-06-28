@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { checkImage } from "../../utils/imageUpload";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
-import { updateProfileUser } from "../../redux/actions/profileAction";
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
+import { updateProfileUser } from '../../redux/actions/profileAction';
+import { checkImage } from '../../utils/imageUpload';
 
 const EditProfile = ({ setOnEdit }) => {
   const initState = {
-    fullname: "",
-    mobile: "",
-    address: "",
-    website: "",
-    story: "",
-    gender: "",
+    fullname: '',
+    mobile: '',
+    story: '',
   };
   const [userData, setUserData] = useState(initState);
-  const { fullname, mobile, address, website, story, gender } = userData;
+  const { fullname, mobile, story } = userData;
 
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState('');
 
-  const { auth, theme } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,11 +49,8 @@ const EditProfile = ({ setOnEdit }) => {
 
   return (
     <div className="edit_profile">
-      <button
-        className="btn btn-danger btn_close"
-        onClick={() => setOnEdit(false)}
-      >
-        Đóng
+      <button className="btn btn_close" onClick={() => setOnEdit(false)}>
+        &times;
       </button>
 
       <form onSubmit={handleSubmit}>
@@ -64,7 +58,6 @@ const EditProfile = ({ setOnEdit }) => {
           <img
             src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
             alt="avatar"
-            style={{ filter: theme ? "invert(1)" : "invert(0)" }}
           />
           <span>
             <i className="fas fa-camera" />
@@ -78,9 +71,22 @@ const EditProfile = ({ setOnEdit }) => {
             />
           </span>
         </div>
+        <div className="form-group">
+          <label htmlFor="story">Câu châm ngôn</label>
+          <input
+            type="text"
+            name="story"
+            value={story}
+            className="form-control"
+            onChange={handleInput}
+            style={{
+              borderRadius: '10px',
+            }}
+          />
+        </div>
 
         <div className="form-group">
-          <label htmlFor="fullname">Tên Đầy Đủ</label>
+          <label htmlFor="fullname">Tên đầy đủ</label>
           <div className="position-relative">
             <input
               type="text"
@@ -89,13 +95,16 @@ const EditProfile = ({ setOnEdit }) => {
               name="fullname"
               value={fullname}
               onChange={handleInput}
+              style={{
+                borderRadius: '10px',
+              }}
             />
             <small
               className="text-danger position-absolute"
               style={{
-                top: "50%",
-                right: "5px",
-                transform: "translateY(-50%)",
+                top: '460%',
+                right: '5px',
+                transform: 'translateY(-50%)',
               }}
             >
               {fullname.length}/25
@@ -104,70 +113,26 @@ const EditProfile = ({ setOnEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="mobile">Số Điện Thoại</label>
+          <label htmlFor="mobile">Số điện thoại</label>
           <input
             type="text"
             name="mobile"
             value={mobile}
             className="form-control"
             onChange={handleInput}
+            style={{
+              borderRadius: '10px',
+            }}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="address">Địa Chỉ</label>
-          <input
-            type="text"
-            name="address"
-            value={address}
-            className="form-control"
-            onChange={handleInput}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="website">Website</label>
-          <input
-            type="text"
-            name="website"
-            value={website}
-            className="form-control"
-            onChange={handleInput}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="story">Giới Thiệu</label>
-          <textarea
-            name="story"
-            value={story}
-            cols="30"
-            rows="4"
-            className="form-control"
-            onChange={handleInput}
-          />
-
-          <small className="text-danger d-block text-right">
-            {story.length}/200
-          </small>
-        </div>
-
-        <label htmlFor="gender">Giới Tính</label>
-        <div className="input-group-prepend px-0 mb-4">
-          <select
-            name="gender"
-            id="gender"
-            value={gender}
-            className="custom-select text-capitalize"
-            onChange={handleInput}
-          >
-            <option value="male">Nam</option>
-            <option value="female">Nữ</option>
-            <option value="other">Khác</option>
-          </select>
-        </div>
-
-        <button className="btn btn-info w-100" type="submit">
+        <button
+          className="btn btn-success w-100"
+          type="submit"
+          style={{
+            borderRadius: '10px',
+          }}
+        >
           Lưu
         </button>
       </form>

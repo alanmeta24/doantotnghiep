@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeaderDetail from '../../components/Classroom/HeaderDetail';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Route } from 'react-router-dom';
 import { getClassroom } from '../../redux/actions/classroomAction';
 import ClassDetail from '../../components/Classroom/ClassDetail';
 

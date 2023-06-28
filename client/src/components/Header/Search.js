@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import LoadIcon from '../../assets/images/loading.gif';
-import { GLOBALTYPES } from '../../redux/types/globalTypes';
-import { getDataAPI } from '../../api/fetchData';
-import UserCard from '../UserCard';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getDataAPI } from "../../utils/fetchData";
+import { GLOBALTYPES } from "../../redux/actions/globalTypes";
+import UserCard from "../UserCard";
+import LoadIcon from "../../images/loading.gif";
 
 const Search = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
 
   const { auth } = useSelector((state) => state);
@@ -31,7 +31,7 @@ const Search = () => {
   };
 
   const handleClose = () => {
-    setSearch('');
+    setSearch("");
     setUsers([]);
   };
 
@@ -42,17 +42,15 @@ const Search = () => {
         name="search"
         value={search}
         id="search"
-        title="Tìm kiếm"
+        title="Nhập để tìm kiếm"
         onChange={(e) =>
-          setSearch(e.target.value.toLowerCase().replace(/ /g, ''))
+          setSearch(e.target.value.toLowerCase().replace(/ /g, ""))
         }
       />
 
-      <div className="search_icon" style={{ opacity: search ? 0 : 0.5 }}>
-        <span className="material-icons" style={{ fontSize: '22px' }}>
-          search
-        </span>
-        <span>Tìm kiếm</span>
+      <div className="search_icon" style={{ opacity: search ? 0 : 0.3 }}>
+        <span className="material-icons">search</span>
+        <span>Nhập để tìm kiếm</span>
       </div>
 
       <div
@@ -63,11 +61,11 @@ const Search = () => {
         &times;
       </div>
 
-      <button type="submit" style={{ display: 'none' }}>
+      <button type="submit" style={{ display: "none" }}>
         Tìm Kiếm
       </button>
 
-      {load && <img className="loading_search" src={LoadIcon} alt="loading" />}
+      {load && <img className="loading" src={LoadIcon} alt="loading" />}
 
       <div className="users">
         {search &&

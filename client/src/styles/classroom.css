@@ -58,12 +58,13 @@
   overflow: hidden;
   white-space: nowrap;
   display: block;
+  line-height: 2.7rem;
 }
 .main__section {
   font-family: 'Google Sans', Roboto, Arial, sans-serif;
   font-size: 1.375rem;
   font-weight: 400;
-  line-height: 1.75rem;
+  line-height: 2.7rem;
   color: #fff;
 }
 .main__wrapper2 {
@@ -86,7 +87,7 @@
   border: 1.5px solid #dadce0;
   padding: 19px;
   border-radius: 10px;
-  width: 260px;
+  width: 296px;
   height: 93px;
   margin-bottom: 18px;
 }
@@ -104,6 +105,7 @@
   margin-bottom: 0 !important;
 }
 .main__announcementsWrapper {
+  width: 68%;
   border-radius: 0.5rem;
   min-height: 4.5rem;
   height: 100%;
@@ -112,9 +114,8 @@
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
     0 2px 6px 2px rgba(60, 64, 67, 0.149);
   padding: 24px;
-  width: 707px;
+  width: 679px;
   border-radius: 0.5rem;
-
   color: rgba(0, 0, 0, 0.549);
 }
 
@@ -131,7 +132,7 @@
   height: 20vh !important;
 }
 #filled-multiline-exercise {
-  height: 35vh !important;
+  height: 20vh !important;
 }
 .main__form {
   display: flex;
@@ -152,7 +153,7 @@
 }
 
 .main__footer-btn {
-  text-align: end;
+  margin-left: 40%;
 }
 
 @media only screen and (max-width: 842px) {
@@ -173,13 +174,6 @@
 .form__inputs:last-of-type {
   margin-bottom: 40px;
 }
-.form__inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
 
 .MuiDialog-paperWidthLg {
   width: 40% !important;
@@ -197,7 +191,9 @@
 /* css classrooms */
 .header_class {
   display: flex;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 2% 0%;
 }
 .header_class button {
   margin-left: 15px;

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createComment } from "../../redux/actions/commentAction";
-import Icons from "../Icons";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { createComment } from '../../redux/actions/commentAction';
+import Icons from '../Icons';
 
 const InputComment = ({ children, post, onReply, setOnReply }) => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const { auth, socket, theme } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
       return;
     }
 
-    setContent("");
+    setContent('');
 
     const newComment = {
       content,
@@ -33,7 +33,11 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
   };
 
   return (
-    <form className="card-footer comment_input" onSubmit={handleSubmit}>
+    <form
+      className="card-footer comment_input"
+      style={{ width: '100%' }}
+      onSubmit={handleSubmit}
+    >
       {children}
       <input
         type="text"
@@ -41,9 +45,9 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         style={{
-          filter: theme ? "invert(1)" : "invert(0)",
-          color: theme ? "white" : "#111",
-          background: theme ? "rgba(0,0,0,.03)" : "",
+          filter: theme ? 'invert(1)' : 'invert(0)',
+          color: theme ? 'white' : '#111',
+          background: theme ? 'rgba(0,0,0,.03)' : '',
         }}
       />
 
